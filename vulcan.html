@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vulcan Defense - Portfólio Comercial & Técnico 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a0d14;
+      --card-bg: #111622;
+      --card-border: #1e2638;
+      --gold-primary: #d4af37;
+      --gold-bright: #f5cf47;
+      --text-main: #f0f4fc;
+      --text-muted: #94a3b8;
+      --accent-blue: #38bdf8;
+      --accent-green: #34d399;
+      --accent-red: #f87171;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    /* Botão de Ação Flutuante */
+    .action-bar {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn-pdf {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright));
+      color: #000;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-pdf:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(212, 175, 55, 0.6);
+    }
+
+    .deck-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .slide {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 40px;
+      min-height: 680px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      position: relative;
+      page-break-after: always;
+      break-after: page;
+    }
+
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+
+    .slide-header-left h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold-primary);
+      margin-bottom: 6px;
+    }
+
+    .slide-header-left h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      color: var(--text-main);
+    }
+
+    .slide-header-logo {
+      height: 48px;
+      width: auto;
+      filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
+    }
+
+    .slide-badge {
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-bright);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .cover-slide {
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at center, #1a2234 0%, #0a0d14 100%);
+    }
+
+    .cover-logo-img {
+      width: 200px;
+      height: auto;
+      margin-bottom: 24px;
+      filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.4));
+    }
+
+    .cover-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      letter-spacing: -1px;
+    }
+
+    .cover-subtitle {
+      font-size: 1.25rem;
+      color: var(--gold-primary);
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    .cover-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      max-width: 800px;
+      margin-bottom: 30px;
+    }
+
+    .tag {
+      background: #182030;
+      border: 1px solid #28344d;
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      background: #151b28;
+      border: 1px solid #222c40;
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .card h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      color: var(--gold-bright);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card ul li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 8px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .card ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--gold-primary);
+      font-weight: bold;
+    }
+
+    .footer-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--card-border);
+      padding-top: 16px;
+      margin-top: 20px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .method-step {
+      background: #151b28;
+      border-top: 3px solid var(--gold-primary);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .method-step-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gold-bright);
+      margin-bottom: 4px;
+    }
+
+    .method-step-title {
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+
+    .method-step-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    @media print {
+      @page {
+        size: A4 landscape;
+        margin: 0;
+      }
+
+      body {
+        background-color: #0a0d14 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .action-bar {
+        display: none !important;
+      }
+
+      .deck-container {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .slide {
+        margin-bottom: 0 !important;
+        border: none !important;
+        border-radius: 0 !important;
+        min-height: 100vh !important;
+        height: 100vh !important;
+        box-shadow: none !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        box-sizing: border-box !important;
+        padding: 30px 40px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="action-bar">
+  <button class="btn-pdf" onclick="window.print()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+    Gerar Versão PDF
+  </button>
+</div>
+
+<div class="deck-container">
+
+  <!-- SLIDE 1: CAPA -->
+  <div class="slide cover-slide">
+    <img class="cover-logo-img" src="logovulcan.png" alt="Vulcan Defense Logo">
+    <h1 class="cover-title">VULCAN DEFENSE</h1>
+    <p class="cover-subtitle">PORTFÓLIO COMERCIAL & BASE TÉCNICA DE SERVIÇOS 2026</p>
+    <div class="cover-tags">
+      <span class="tag">Cyber Defense</span>
+      <span class="tag">SOC/MDR</span>
+      <span class="tag">AI Security</span>
+      <span class="tag">AppSec</span>
+      <span class="tag">DevSecOps</span>
+      <span class="tag">OT/ICS</span>
+      <span class="tag">GRC</span>
+      <span class="tag">Incident Response</span>
+      <span class="tag">VulcanAcademy</span>
+    </div>
+    <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 650px;">
+      Proteção contínua e capacidade operacional integrada para ambientes corporativos, regulados, industriais e estratégicos.
+    </p>
+    <div style="margin-top: 40px; font-size: 0.85rem; color: var(--text-muted);">
+      VULCAN DEFENSE LTDA - ME | CNPJ 51.530.057/0001-33
+    </div>
+  </div>
+
+  <!-- SLIDE 2: MODELO OPERACIONAL -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-header-left">
+        <h3>Visão Geral</h3>
+        <h1>Segurança como Capacidade Operacional</h1>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div class="slide-badge">Ciclo de Maturidade</div>
+        <img class="slide-header-logo" src="logovulcan.png" alt="Vulcan Defense">
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <h4>01. Prevenir</h4>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">Arquitetura, hardening, IAM, AppSec, DevSecOps e gestão proativa de vulnerabilidades.</p>
+      </div>
+      <div class="card">
+        <h4>02. Detectar</h4>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">SIEM, EDR/XDR, correlação de eventos, Threat Intelligence, Detection Engineering e Threat Hunting.</p>
+      </div>
+      <div class="card">
+        <h4>03. Responder</h4>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">Incident Response, contenção imediata, investigação, forense digital, playbooks e recuperação.</p>
+      </div>
+      <div class="card">
+        <h4>04. Evidenciar</h4>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">Dashboards executivos, KPIs, relatórios técnicos, trilhas de auditoria e evidências para compliance.</p>
+      </div>
+      <div class="card">
+        <h4>05. Melhorar</h4>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">Reteste, tuning de regras, lições aprendidas (lessons learned), roadmap de maturidade e evolução contínua.</p>
+      </div>
+      <div class="card">
+        <h4>06. Capacitar</h4>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">Formação de Security Champions, treinamentos práticos, laboratórios e transferência de conhecimento.</p>
+      </div>
+    </div>
+    <div class="footer-info">
+      <span>A Vulcan atua como extensão técnica do cliente integrando pessoas, processos e tecnologia.</span>
+      <span>Página 02</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: CYBER DEFENSE (SOC/SIEM/MDR) -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-header-left">
+        <h3>Escopo Detalhado</h3>
+        <h1>SOC, SIEM e MDR/XDR (Operações de Ciber Segurança)</h1>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div class="slide-badge">Operações 24x7</div>
+        <img class="slide-header-logo" src="logovulcan.png" alt="Vulcan Defense">
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h4>Objetivo & Atividades Técnicas</h4>
+        <ul>
+          <li><strong>Objetivo:</strong> Centralizar telemetria, detectar comportamentos anômalos, reduzir tempo de investigação e coordenar resposta[cite: 1, 2].</li>
+          <li>Onboarding e normalização de fontes de logs heterogêneas[cite: 1, 2].</li>
+          <li>Criação de regras de correlação customizadas e tuning contínuo[cite: 1, 2].</li>
+          <li>Detection Engineering e mapeamento de TTPs no MITRE ATT&CK[cite: 1, 2].</li>
+          <li>Threat Hunting proativo e execução de playbooks SOAR[cite: 1, 2].</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Entregáveis, Métricas & Frameworks</h4>
+        <ul>
+          <li><strong>Entregáveis:</strong> Matriz de fontes, catálogo de casos de uso, dashboards/KPIs, runbooks e relatórios de incidentes[cite: 1, 2].</li>
+          <li><strong>Tecnologias:</strong> SIEM (Sentinel, Splunk, Elastic), EDR/XDR (CrowdStrike, Defender, SentinelOne), SOAR[cite: 1, 2].</li>
+          <li><strong>Indicadores (KPIs):</strong> MTTD (Detecção), MTTR (Resposta), cobertura de fontes, taxa de falsos positivos, SLA de triagem[cite: 1, 2].</li>
+          <li><strong>Referenciais:</strong> NIST CSF, MITRE ATT&CK, ISO 27001/27002[cite: 1, 2].</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-info">
+      <span>Vulcan Defense - Operações de Ciber Segurança</span>
+      <span>Página 03</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: VULCAN EXPOSURE -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-header-left">
+        <h3>Escopo Detalhado</h3>
+        <h1>Gestão de Vulnerabilidades e Exposure (Vulcan Exposure)</h1>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div class="slide-badge">EASM / CTEM</div>
+        <img class="slide-header-logo" src="logovulcan.png" alt="Vulcan Defense">
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h4>Objetivo & Atividades Técnicas</h4>
+        <ul>
+          <li><strong>Objetivo:</strong> Transformar achados técnicos em uma fila de risco priorizada e acompanhada até a remediação efetiva[cite: 1, 2].</li>
+          <li>Inventário dinâmico e contínuo de ativos internos e expostos à internet[cite: 1, 2].</li>
+          <li>Scans autenticados/não-autenticados e monitoramento de superfície de ataque[cite: 1, 2].</li>
+          <li>Priorização baseada em risco real, contexto de negócio e inteligência de ameaças (EPSS/CVSS)[cite: 1, 2].</li>
+          <li>Validação manual de falhas críticas e gestão de exceções com SLA[cite: 1, 2].</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Entregáveis, Métricas & Frameworks</h4>
+        <ul>
+          <li><strong>Entregáveis:</strong> Inventário de ativos, backlog priorizado, plano de tratamento, relatório de tendência e evidência de reteste[cite: 1, 2].</li>
+          <li><strong>Tecnologias:</strong> Tenable, Qualys, Rapid7, scanners SCA, ticketing (Jira/ServiceNow)[cite: 1, 2].</li>
+          <li><strong>Indicadores (KPIs):</strong> Aging de falhas, MTTR de vulnerabilidades, % de cobertura, críticas vencidas, reincidência[cite: 1, 2].</li>
+          <li><strong>Referenciais:</strong> Gartner CTEM, NIST CSF, ISO 27001, CIS Controls, PCI DSS[cite: 1, 2].</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-info">
+      <span>Vulcan Defense - Exposure Management</span>
+      <span>Página 04</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: PENTEST & OFFENSIVE SECURITY -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-header-left">
+        <h3>Escopo Detalhado</h3>
+        <h1>Pentest e Offensive Security (Red Team)</h1>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div class="slide-badge">Validação Técnica</div>
+        <img class="slide-header-logo" src="logovulcan.png" alt="Vulcan Defense">
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h4>Objetivo & Atividades Técnicas</h4>
+        <ul>
+          <li><strong>Objetivo:</strong> Identificar falhas exploráveis de forma autorizada e produzir evidências acionáveis para correção[cite: 1, 2].</li>
+          <li>Testes de Invasão (Black-box, Grey-box, White-box) em Web, APIs e Redes[cite: 1, 2].</li>
+          <li>Exercícios de Red Teaming e simulação de adversários motivados[cite: 1, 2].</li>
+          <li>Engenharia social direcionada (Spear Phishing, Vishing, Smishing)[cite: 1, 2].</li>
+          <li>Análise de autenticação, autorização, lógica de negócio e cenários de abuso[cite: 1, 2].</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Entregáveis, Métricas & Frameworks</h4>
+        <ul>
+          <li><strong>Entregáveis:</strong> Relatório executivo de risco, relatório técnico com PoCs seguras, severidade CVSS e termo de Security Acceptance[cite: 1, 2].</li>
+          <li><strong>Ferramentas:</strong> Cobalt Strike, Burp Suite Pro, Metasploit, Silver, GoPhish[cite: 1, 2].</li>
+          <li><strong>Indicadores (KPIs):</strong> Falhas críticas/altas encontradas, taxa de correção, tempo médio de remediação, taxa de sucesso Red Team[cite: 1, 2].</li>
+          <li><strong>Referenciais:</strong> OWASP WSTG, OWASP API Top 10, PTES, NIST SP 800-115, PCI DSS[cite: 1, 2].</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-info">
+      <span>Vulcan Defense - Offensive Security</span>
+      <span>Página 05</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: APPSEC -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-header-left">
+        <h3>Escopo Detalhado</h3>
+        <h1>AppSec (Segurança no Ciclo de Desenvolvimento)</h1>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div class="slide-badge">Software Security</div>
+        <img class="slide-header-logo" src="logovulcan.png" alt="Vulcan Defense">
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h4>Objetivo & Atividades Técnicas</h4>
+        <ul>
+          <li><strong>Objetivo:</strong> Reduzir vulnerabilidades desde a fase de requisitos e arquitetura até build, teste e produção[cite: 1, 2].</li>
+          <li>Threat Modeling (Modelagem de Ameaças) durante o design de software[cite: 1, 2].</li>
+          <li>Revisão de arquitetura e análise estática (SAST) / dinâmica (DAST)[cite: 1, 2].</li>
+          <li>Análise de composição de software (SCA) e detecção de segredos expostos[cite: 1, 2].</li>
+          <li>Segurança de APIs (REST/GraphQL) e guias de Secure Coding[cite: 1, 2].</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Entregáveis, Métricas & Frameworks</h4>
+        <ul>
+          <li><strong>Entregáveis:</strong> Matriz de Threat Model, baseline de AppSec, relatórios de scans, padrões de código seguro e plano de remediação[cite: 1, 2].</li>
+          <li><strong>Tecnologias:</strong> Checkmarx, SonarQube, Snyk, Veracode, Fortify, GitGuardian[cite: 1, 2].</li>
+          <li><strong>Indicadores (KPIs):</strong> Density de findings por KLOC, cobertura de código analisado, MTTR de falhas em código[cite: 1, 2].</li>
+          <li><strong>Referenciais:</strong> OWASP ASVS, OWASP SAMM, OWASP Top 10, NIST SSDF[cite: 1, 2].</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-info">
+      <span>Vulcan Defense - Application Security</span>
+      <span>Página 06</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: DEVSECOPS -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-header-left">
+        <h3>Escopo Detalhado</h3>
+        <h1>DevSecOps (Security as Code)</h1>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div class="slide-badge">Automação & CI/CD</div>
+        <img class="slide-header-logo" src="logovulcan.png" alt="Vulcan Defense">
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h4>Objetivo & Atividades Técnicas</h4>
+        <ul>
+          <li><strong>Objetivo:</strong> Incorporar controles automatizados ao fluxo de entrega (CI/CD) sem impactar a velocidade da engenharia[cite: 1, 2].</li>
+          <li>Configuração de Security Gates e políticas automatizadas por severidade[cite: 1, 2].</li>
+          <li>Scan de código, dependências, imagens de contêineres e IaC (Terraform/Ansible)[cite: 1, 2].</li>
+          <li>Proteção da supply chain de software e assinaturas de artefatos[cite: 1, 2].</li>
+          <li>Automação de coleta de evidências de conformidade para auditorias[cite: 1, 2].</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Entregáveis, Métricas & Frameworks</h4>
+        <ul>
+          <li><strong>Entregáveis:</strong> Pipelines CI/CD com segurança ativa, documentação de gates, templates seguros, dashboards e runbooks[cite: 1, 2].</li>
+          <li><strong>Tecnologias:</strong> GitHub Actions, GitLab CI, Azure DevOps, Trivy, Checkov, Tfsec[cite: 1, 2].</li>
+          <li><strong>Indicadores (KPIs):</strong> % de pipelines protegidas, taxa de falhas em Quality Gates, tempo adicional no build[cite: 1, 2].</li>
+          <li><strong>Referenciais:</strong> NIST SSDF, OWASP SAMM, SLSA, CIS Benchmarks[cite: 1, 2].</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-info">
+      <span>Vulcan Defense - DevSecOps</span>
+      <span>Página 07</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: CLOUD, IAM, ENDPOINT E REDES -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-header-left">
+        <h3>Escopo Detalhado</h3>
+        <h1>Cloud, IAM, Endpoint e Redes (Controles de Infraestrutura)</h1>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div class="slide-badge">Zero Trust Architecture</div>
+        <img class="slide-header-logo" src="logovulcan.png" alt="Vulcan Defense">
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h4>Objetivo & Atividades Técnicas</h4>
+        <ul>
+          <li><strong>Objetivo:</strong> Reduzir exposição e privilégios excessivos em ambientes multicloud, identidades e redes[cite: 1, 2].</li>
+          <li>Avaliação de postura de segurança cloud (CSPM) e cargas de trabalho (CWPP)[cite: 1, 2].</li>
+          <li>Gestão de identidades e acessos privilegiados (IAM/PAM), MFA e Least Privilege[cite: 1, 2].</li>
+          <li>Hardening de sistemas operacionais, contêineres e dispositivos finais[cite: 1, 2].</li>
+          <li>Microssegmentação de rede e implementação de arquitetura Zero Trust (ZTNA)[cite: 1, 2].</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Entregáveis, Métricas & Frameworks</h4>
+        <ul>
+          <li><strong>Entregáveis:</strong> Relatório de postura cloud, plano IAM/PAM, baselines de hardening, mapa de segmentação e fontes de logs[cite: 1, 2].</li>
+          <li><strong>Tecnologias:</strong> AWS, Azure, GCP, Okta, CyberArk, Microsoft Entra, Prisma Cloud, Wiz, Fortinet, Palo Alto[cite: 1, 2].</li>
+          <li><strong>Indicadores (KPIs):</strong> % contas com Least Privilege, cobertura de EDR, aderência aos baselines CIS, exposição pública[cite: 1, 2].</li>
+          <li><strong>Referenciais:</strong> CIS Benchmarks, CSA CCM, NIST SP 800-207 (Zero Trust), ISO 27001[cite: 1, 2].</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-info">
+      <span>Vulcan Defense - Infrastructure Security</span>
+      <span>Página 08</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: OT / ICS E CYBERSHIELD OT -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-header-left">
+        <h3>Escopo Detalhado</h3>
+        <h1>OT / ICS e CyberShield OT (Defesa Industrial)</h1>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div class="slide-badge">Automação & SCADA</div>
+        <img class="slide-header-logo" src="logovulcan.png" alt="Vulcan Defense">
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h4>Objetivo & Atividades Técnicas</h4>
+        <ul>
+          <li><strong>Objetivo:</strong> Proteger ativos industriais e integrações TI/OT preservando a disponibilidade e segurança operacional[cite: 1, 2].</li>
+          <li>Inventário passivo de ativos de rede OT (PLCs, RTUs, IHMs, SCADA)[cite: 1, 2].</li>
+          <li>Segmentação e alinhamento da rede industrial ao Modelo Purdue[cite: 1, 2].</li>
+          <li>Monitoramento de protocolos industriais (Modbus, Profinet, DNP3, IEC 104)[cite: 1, 2].</li>
+          <li>Resposta a incidentes adaptada ao contexto industrial (OT-aware)[cite: 1, 2].</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Entregáveis, Métricas & Frameworks</h4>
+        <ul>
+          <li><strong>Entregáveis:</strong> Inventário de ativos OT, diagrama de segmentação, matriz de risco cyber-físico, casos de uso SIEM OT e playbooks[cite: 1, 2].</li>
+          <li><strong>Tecnologias:</strong> CyberShield OT / Vulcan-SIEM OT, Nozomi Networks, Claroty, Dragos, FortiGate Rugged[cite: 1, 2].</li>
+          <li><strong>Indicadores (KPIs):</strong> Cobertura de ativos catalogados, downtime operacional (alvo = 0), conformidade IEC 62443[cite: 1, 2].</li>
+          <li><strong>Referenciais:</strong> ISA/IEC 62443, NIST SP 800-82, MITRE ATT&CK for ICS[cite: 1, 2].</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-info">
+      <span>Vulcan Defense - OT/ICS Security</span>
+      <span>Página 09</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: INCIDENT RESPONSE & FORENSE -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-header-left">
+        <h3>Escopo Detalhado</h3>
+        <h1>Incident Response & Forense (Vulcan Response)</h1>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div class="slide-badge">Resposta a Crises</div>
+        <img class="slide-header-logo" src="logovulcan.png" alt="Vulcan Defense">
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h4>Objetivo & Atividades Técnicas</h4>
+        <ul>
+          <li><strong>Objetivo:</strong> Conter incidentes graves, preservar evidências digitais, determinar causa raiz e restaurar a operação[cite: 1, 2].</li>
+          <li>Atendimento emergencial 24x7 para contenção de Ransomware e ataques avançados[cite: 1, 2].</li>
+          <li>Coleta e preservação de evidências com rigorosa cadeia de custódia[cite: 1, 2].</li>
+          <li>Análise forense em memória, disco, artefatos e engenharia reversa de malware[cite: 1, 2].</li>
+          <li>Análise de causa raiz (Root Cause Analysis - RCA) e plano pós-incidente[cite: 1, 2].</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Entregáveis, Métricas & Frameworks</h4>
+        <ul>
+          <li><strong>Entregáveis:</strong> Relatório de investigação forense/RCA, linha do tempo detalhada, extração de IoCs/YARA e cadeia de custódia[cite: 1, 2].</li>
+          <li><strong>Ferramentas:</strong> FTK Imager, Volatility, KAPE, Velociraptor, Ghidra, EnCase[cite: 1, 2].</li>
+          <li><strong>Indicadores (KPIs):</strong> MTTC (Tempo de Contenção), MTTE (Erradicação), integridade de evidências (100%)[cite: 1, 2].</li>
+          <li><strong>Referenciais:</strong> NIST SP 800-61, ISO/IEC 27037, ISO 27035, FIRST[cite: 1, 2].</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-info">
+      <span>Vulcan Defense - Incident Response</span>
+      <span>Página 10</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 11: GRC, COMPLIANCE E PRIVACIDADE -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-header-left">
+        <h3>Escopo Detalhado</h3>
+        <h1>GRC, Compliance e Privacidade (Governança por Evidência)</h1>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div class="slide-badge">Conformidade & Risco</div>
+        <img class="slide-header-logo" src="logovulcan.png" alt="Vulcan Defense">
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h4>Objetivo & Atividades Técnicas</h4>
+        <ul>
+          <li><strong>Objetivo:</strong> Converter requisitos regulatórios e contratuais em controles implementáveis e auditáveis[cite: 1, 2].</li>
+          <li>Gap Analysis e diagnósticos de maturidade (ISO 27001, PCI DSS, LGPD)[cite: 1, 2].</li>
+          <li>Elaboração e revisão de Políticas de Segurança da Informação (PSI)[cite: 1, 2].</li>
+          <li>Gestão de riscos de segurança em terceiros (TPRM)[cite: 1, 2].</li>
+          <li>Data Mapping, ROPA e elaboração de Relatórios de Impacto (DPIA/RIPD)[cite: 1, 2].</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Entregáveis, Métricas & Frameworks</h4>
+        <ul>
+          <li><strong>Entregáveis:</strong> Relatório de maturidade/gaps, Risk Register, pacote de evidências para auditoria, políticas e políticas LGPD[cite: 1, 2].</li>
+          <li><strong>Tecnologias:</strong> OneTrust, ServiceNow GRC, Varonis, Microsoft Purview[cite: 1, 2].</li>
+          <li><strong>Indicadores (KPIs):</strong> % controles atendidos, riscos críticos mitigados, tempo de resposta a requisições de titulares (DSR)[cite: 1, 2].</li>
+          <li><strong>Referenciais:</strong> ISO/IEC 27001:2022, NIST CSF 2.0, PCI DSS v4.0, SOC 2, LGPD/GDPR[cite: 1, 2].</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-info">
+      <span>Vulcan Defense - Governance, Risk & Compliance</span>
+      <span>Página 11</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 12: AMBIENTES CRÍTICOS E SETORES ESTRATÉGICOS -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-header-left">
+        <h3>Setores de Atuação</h3>
+        <h1>Ambientes Críticos e Estratégicos</h1>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div class="slide-badge">Alta Resiliência</div>
+        <img class="slide-header-logo" src="logovulcan.png" alt="Vulcan Defense">
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <h4>Defesa & Militares</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Segmentação por criticidade, IAM/PAM, hardening, SOC/SIEM, EDR/XDR, hunting, forense e proteção de supply chain[cite: 1, 2].</p>
+      </div>
+      <div class="card">
+        <h4>Segredos Industriais / P&D</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Classificação de dados, Least Privilege, DLP, criptografia, auditoria rigorosa de código/Git e gestão de acessos a IP[cite: 1, 2].</p>
+      </div>
+      <div class="card">
+        <h4>Energia & Utilities</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Segurança TI/OT, SCADA/PLC, segmentação rígida, telemetria industrial, acesso remoto seguro e conformidade NERC CIP[cite: 1, 2].</p>
+      </div>
+      <div class="card">
+        <h4>Logística & CDs</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Proteção de WMS/TMS/ERP, segurança em APIs/EDI, proteção de endpoints em centros de distribuição e continuidade operacional[cite: 1, 2].</p>
+      </div>
+      <div class="card">
+        <h4>Infraestrutura Crítica</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Defesa em profundidade, planos de continuidade (PCN/DRP), isolamento Air-Gap e simulações de crises cibernéticas[cite: 1, 2].</p>
+      </div>
+      <div class="card">
+        <h4>Plataformas Vulcan</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Plataforma proprietária integrando Vulcan Agent (FIM, logs, inventário), Vulcan-SIEM, Vulcan Exposure e Vulcan Response[cite: 1, 2].</p>
+      </div>
+    </div>
+    <div class="footer-info">
+      <span>Vulcan Defense - Specialized Solutions</span>
+      <span>Página 12</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 13: VULCANACADEMY -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-header-left">
+        <h3>Escopo Detalhado</h3>
+        <h1>VulcanAcademy (Capacitação e Formação)</h1>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div class="slide-badge">Fator Humano</div>
+        <img class="slide-header-logo" src="logovulcan.png" alt="Vulcan Defense">
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h4>Objetivo & Atividades Técnicas</h4>
+        <ul>
+          <li><strong>Objetivo:</strong> Elevar a maturidade técnica da organização e converter controles de segurança em cultura e comportamento[cite: 1, 2].</li>
+          <li>Capacitação em Secure Coding / AppSec para times de engenharia[cite: 1, 2].</li>
+          <li>Formação em DevSecOps, CI/CD seguro e observabilidade[cite: 1, 2].</li>
+          <li>Treinamento operacional de SOC, SIEM e Resposta a Incidentes[cite: 1, 2].</li>
+          <li>Programas de Security Champions e simulações contínuas de Phishing[cite: 1, 2].</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Entregáveis, Métricas & Frameworks</h4>
+        <ul>
+          <li><strong>Entregáveis:</strong> Trilhas de aprendizagem, laboratórios práticos, avaliações, certificados/badges e relatórios de evolução[cite: 1, 2].</li>
+          <li><strong>Tecnologias:</strong> Ambiente educacional com simulações reais, Hack The Box Enterprise, KnowBe4[cite: 1, 2].</li>
+          <li><strong>Indicadores (KPIs):</strong> Phish-Prone Percentage (PPP), taxa de conclusão de módulos, score em labs práticos[cite: 1, 2].</li>
+          <li><strong>Referenciais:</strong> NIST SP 800-50, SANS Security Awareness Model, OWASP[cite: 1, 2].</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-info">
+      <span>VulcanAcademy - Human Risk Management</span>
+      <span>Página 13</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 14: AI SECURITY & GOVERNANCE (NOVO SLIDE DE IA) -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-header-left">
+        <h3>Escopo Detalhado</h3>
+        <h1>Segurança, Proteção & Governança de Inteligência Artificial</h1>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div class="slide-badge">AI Security & LLM</div>
+        <img class="slide-header-logo" src="logovulcan.png" alt="Vulcan Defense">
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h4>Proteção, Monitoramento & Auditoria de IA</h4>
+        <ul>
+          <li><strong>Proteção de IA & LLM:</strong> Defesa contra Prompt Injection, Data Poisoning, vazamento de modelo (Model Inversion) e alucinações críticas.</li>
+          <li><strong>Monitoramento de Prompts & Data Leakage:</strong> Filtros de tempo real para evitar vazamento de dados sensíveis (PII/segredos) via ferramentas de GenAI corporativas.</li>
+          <li><strong>Auditoria & Vulnerabilidades em IA:</strong> Pentest e Red Teaming em aplicações com LLM, validação de permissões e segurança da cadeia de suprimentos de dados (Data Pipeline).</li>
+          <li><strong>Avisos de Risco & Shadow AI:</strong> Identificação e bloqueio de ferramentas não autorizadas de IA na rede corporativa.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Políticas, Boas Práticas & Compliance</h4>
+        <ul>
+          <li><strong>Políticas de Uso Aceitável de GenAI:</strong> Criação de diretrizes claras para utilização segura de inteligência artificial por colaboradores e desenvolvedores.</li>
+          <li><strong>Governança & AI Risk Assessment:</strong> Mapeamento de riscos éticos, viés algorítmico, privacidade e direitos autorais associados ao uso de IA.</li>
+          <li><strong>Frameworks de Referência:</strong> OWASP Top 10 for LLM Applications, NIST AI Risk Management Framework (AI RMF 1.0) e ISO/IEC 42001 (Sistema de Gestão de IA).</li>
+          <li><strong>Entregáveis:</strong> Política de Uso de IA, Relatório de Auditoria de LLMs, Matriz de Riscos de GenAI e treinamentos específicos de AI Safety.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-info">
+      <span>Vulcan Defense - AI Security & Governance</span>
+      <span>Página 14</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 15: MODELOS DE CONTRATAÇÃO & MÉTODO DE ENTREGA -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-header-left">
+        <h3>Engajamento Comercial</h3>
+        <h1>Modelos de Contratação & Método de Entrega</h1>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div class="slide-badge">Flexibilidade & Processo</div>
+        <img class="slide-header-logo" src="logovulcan.png" alt="Vulcan Defense">
+      </div>
+    </div>
+    
+    <div style="margin-bottom: 24px;">
+      <h4 style="color: var(--gold-bright); margin-bottom: 12px; font-family: 'Space Grotesk';">Modelos de Contratação</h4>
+      <div class="grid-3">
+        <div class="card">
+          <h4 style="font-size: 0.95rem;">Projeto Fechado</h4>
+          <p style="font-size: 0.82rem; color: var(--text-muted);">Escopo, prazo e entregáveis delimitados (Pentests, Assessments, Auditorias de IA)[cite: 1, 2].</p>
+        </div>
+        <div class="card">
+          <h4 style="font-size: 0.95rem;">Serviço Gerenciado (MSS/MDR)</h4>
+          <p style="font-size: 0.82rem; color: var(--text-muted);">Operação contínua 24x7 com garantias de SLA (SOC, Exposure, Monitoramento de IA)[cite: 1, 2].</p>
+        </div>
+        <div class="card">
+          <h4 style="font-size: 0.95rem;">Squad Especializado / Retainer</h4>
+          <p style="font-size: 0.82rem; color: var(--text-muted);">Capacidade técnica dedicada/compartilhada ou reserva para Incident Response[cite: 1, 2].</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h4 style="color: var(--gold-bright); margin-bottom: 12px; font-family: 'Space Grotesk';">Método de Entrega em 6 Etapas</h4>
+      <div class="grid-4" style="grid-template-columns: repeat(6, 1fr);">
+        <div class="method-step">
+          <div class="method-step-num">01</div>
+          <div class="method-step-title">Descoberta</div>
+          <div class="method-step-desc">Mapeamento de ativos, riscos e requisitos[cite: 1, 2].</div>
+        </div>
+        <div class="method-step">
+          <div class="method-step-num">02</div>
+          <div class="method-step-title">Arquitetura</div>
+          <div class="method-step-desc">Desenho de controles e integrações[cite: 1, 2].</div>
+        </div>
+        <div class="method-step">
+          <div class="method-step-num">03</div>
+          <div class="method-step-title">Implantação</div>
+          <div class="method-step-desc">Onboarding, tuning e automação[cite: 1, 2].</div>
+        </div>
+        <div class="method-step">
+          <div class="method-step-num">04</div>
+          <div class="method-step-title">Validação</div>
+          <div class="method-step-desc">Testes, pentest, evidências e aceite[cite: 1, 2].</div>
+        </div>
+        <div class="method-step">
+          <div class="method-step-num">05</div>
+          <div class="method-step-title">Operação</div>
+          <div class="method-step-desc">Monitoramento, resposta e métricas[cite: 1, 2].</div>
+        </div>
+        <div class="method-step">
+          <div class="method-step-num">06</div>
+          <div class="method-step-title">Evolução</div>
+          <div class="method-step-desc">Reteste, lições aprendidas e maturidade[cite: 1, 2].</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-info">
+      <span>Vulcan Defense - Execution Framework</span>
+      <span>Página 15</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 16: ENCERRAMENTO E CONTATO -->
+  <div class="slide cover-slide" style="min-height: 500px;">
+    <img class="cover-logo-img" src="logovulcan.png" alt="Vulcan Defense">
+    <h1 class="cover-title" style="font-size: 2.2rem;">VULCAN DEFENSE</h1>
+    <p style="color: var(--gold-primary); font-size: 1.1rem; margin-bottom: 24px;">Operações de Ciber Segurança</p>
+    
+    <div style="background: #151b28; border: 1px solid #222c40; border-radius: 12px; padding: 24px; max-width: 500px; width: 100%; margin-bottom: 24px;">
+      <p style="margin-bottom: 8px; color: var(--text-main);">🌐 <strong>Web:</strong> vulcandefense.com.br</p>
+      <p style="margin-bottom: 8px; color: var(--text-main);">🎓 <strong>Academy:</strong> academy.vulcandefense.com.br</p>
+      <p style="margin-bottom: 8px; color: var(--text-main);">📞 <strong>Comercial:</strong> +55 21 96658-4646 / +55 21 98682-3676</p>
+    </div>
+
+    <div style="font-size: 0.8rem; color: var(--text-muted);">
+      Segurança da Informação • SOC/MDR • AI Security • AppSec • DevSecOps • OT/ICS • GRC • Incident Response
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
