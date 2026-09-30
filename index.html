@@ -27,6 +27,10 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--bg-dark);
@@ -88,6 +92,7 @@
       position: relative;
       page-break-after: always;
       break-after: page;
+      scroll-margin-top: 20px;
     }
 
     .slide-header {
@@ -165,7 +170,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 10px;
-      max-width: 800px;
+      max-width: 900px;
       margin-bottom: 30px;
     }
 
@@ -176,6 +181,19 @@
       padding: 6px 12px;
       border-radius: 6px;
       font-size: 0.85rem;
+    }
+
+    .tag-link {
+      text-decoration: none;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+    }
+
+    .tag-link:hover {
+      background: rgba(212, 175, 55, 0.2);
+      border-color: var(--gold-primary);
+      color: var(--gold-bright);
+      transform: translateY(-2px);
     }
 
     .grid-2 {
@@ -322,21 +340,24 @@
 <div class="deck-container">
 
   <!-- SLIDE 1: CAPA -->
-  <div class="slide cover-slide">
+  <div class="slide cover-slide" id="slide-1">
     <img class="cover-logo-img" src="logovulcan.png" alt="Vulcan Defense Logo">
     <h1 class="cover-title">VULCAN DEFENSE</h1>
     <p class="cover-subtitle">PORTFÓLIO COMERCIAL & BASE TÉCNICA DE SERVIÇOS 2026</p>
+    
     <div class="cover-tags">
-      <span class="tag">Cyber Defense</span>
-      <span class="tag">SOC/MDR</span>
-      <span class="tag">AI Security</span>
-      <span class="tag">AppSec</span>
-      <span class="tag">DevSecOps</span>
-      <span class="tag">OT/ICS</span>
-      <span class="tag">GRC</span>
-      <span class="tag">Incident Response</span>
-      <span class="tag">VulcanAcademy</span>
+      <a href="#slide-3" class="tag tag-link">Cyber Defense</a>
+      <a href="#slide-3" class="tag tag-link">SOC/MDR</a>
+      <a href="#slide-15" class="tag tag-link">Vulcan CyberShield</a>
+      <a href="#slide-14" class="tag tag-link">Segurança em IA</a>
+      <a href="#slide-6" class="tag tag-link">AppSec</a>
+      <a href="#slide-7" class="tag tag-link">DevSecOps</a>
+      <a href="#slide-9" class="tag tag-link">OT/ICS</a>
+      <a href="#slide-11" class="tag tag-link">GRC</a>
+      <a href="#slide-10" class="tag tag-link">Incident Response</a>
+      <a href="#slide-13" class="tag tag-link">VulcanAcademy</a>
     </div>
+
     <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 650px;">
       Proteção contínua e capacidade operacional integrada para ambientes corporativos, regulados, industriais e estratégicos.
     </p>
@@ -346,7 +367,7 @@
   </div>
 
   <!-- SLIDE 2: MODELO OPERACIONAL -->
-  <div class="slide">
+  <div class="slide" id="slide-2">
     <div class="slide-header">
       <div class="slide-header-left">
         <h3>Visão Geral</h3>
@@ -390,11 +411,11 @@
   </div>
 
   <!-- SLIDE 3: CYBER DEFENSE (SOC/SIEM/MDR) -->
-  <div class="slide">
+  <div class="slide" id="slide-3">
     <div class="slide-header">
       <div class="slide-header-left">
         <h3>Escopo Detalhado</h3>
-        <h1>SOC, SIEM e MDR/XDR (Operações de Ciber Segurança)</h1>
+        <h1>SOC, SIEM e MDR/XDR (Cyber Defense Operations)</h1>
       </div>
       <div style="display: flex; align-items: center; gap: 16px;">
         <div class="slide-badge">Operações 24x7</div>
@@ -423,13 +444,13 @@
       </div>
     </div>
     <div class="footer-info">
-      <span>Vulcan Defense - Operações de Ciber Segurança</span>
+      <span>Vulcan Defense - Cyber Defense Operations</span>
       <span>Página 03</span>
     </div>
   </div>
 
   <!-- SLIDE 4: VULCAN EXPOSURE -->
-  <div class="slide">
+  <div class="slide" id="slide-4">
     <div class="slide-header">
       <div class="slide-header-left">
         <h3>Escopo Detalhado</h3>
@@ -468,7 +489,7 @@
   </div>
 
   <!-- SLIDE 5: PENTEST & OFFENSIVE SECURITY -->
-  <div class="slide">
+  <div class="slide" id="slide-5">
     <div class="slide-header">
       <div class="slide-header-left">
         <h3>Escopo Detalhado</h3>
@@ -507,7 +528,7 @@
   </div>
 
   <!-- SLIDE 6: APPSEC -->
-  <div class="slide">
+  <div class="slide" id="slide-6">
     <div class="slide-header">
       <div class="slide-header-left">
         <h3>Escopo Detalhado</h3>
@@ -546,7 +567,7 @@
   </div>
 
   <!-- SLIDE 7: DEVSECOPS -->
-  <div class="slide">
+  <div class="slide" id="slide-7">
     <div class="slide-header">
       <div class="slide-header-left">
         <h3>Escopo Detalhado</h3>
@@ -585,7 +606,7 @@
   </div>
 
   <!-- SLIDE 8: CLOUD, IAM, ENDPOINT E REDES -->
-  <div class="slide">
+  <div class="slide" id="slide-8">
     <div class="slide-header">
       <div class="slide-header-left">
         <h3>Escopo Detalhado</h3>
@@ -624,7 +645,7 @@
   </div>
 
   <!-- SLIDE 9: OT / ICS E CYBERSHIELD OT -->
-  <div class="slide">
+  <div class="slide" id="slide-9">
     <div class="slide-header">
       <div class="slide-header-left">
         <h3>Escopo Detalhado</h3>
@@ -663,7 +684,7 @@
   </div>
 
   <!-- SLIDE 10: INCIDENT RESPONSE & FORENSE -->
-  <div class="slide">
+  <div class="slide" id="slide-10">
     <div class="slide-header">
       <div class="slide-header-left">
         <h3>Escopo Detalhado</h3>
@@ -702,7 +723,7 @@
   </div>
 
   <!-- SLIDE 11: GRC, COMPLIANCE E PRIVACIDADE -->
-  <div class="slide">
+  <div class="slide" id="slide-11">
     <div class="slide-header">
       <div class="slide-header-left">
         <h3>Escopo Detalhado</h3>
@@ -741,7 +762,7 @@
   </div>
 
   <!-- SLIDE 12: AMBIENTES CRÍTICOS E SETORES ESTRATÉGICOS -->
-  <div class="slide">
+  <div class="slide" id="slide-12">
     <div class="slide-header">
       <div class="slide-header-left">
         <h3>Setores de Atuação</h3>
@@ -785,7 +806,7 @@
   </div>
 
   <!-- SLIDE 13: VULCANACADEMY -->
-  <div class="slide">
+  <div class="slide" id="slide-13">
     <div class="slide-header">
       <div class="slide-header-left">
         <h3>Escopo Detalhado</h3>
@@ -823,15 +844,15 @@
     </div>
   </div>
 
-  <!-- SLIDE 14: AI SECURITY & GOVERNANCE (NOVO SLIDE DE IA) -->
-  <div class="slide">
+  <!-- SLIDE 14: SEGURANÇA EM IA -->
+  <div class="slide" id="slide-14">
     <div class="slide-header">
       <div class="slide-header-left">
         <h3>Escopo Detalhado</h3>
-        <h1>Segurança, Proteção & Governança de Inteligência Artificial</h1>
+        <h1>Segurança, Proteção & Governança em Inteligência Artificial</h1>
       </div>
       <div style="display: flex; align-items: center; gap: 16px;">
-        <div class="slide-badge">AI Security & LLM</div>
+        <div class="slide-badge">Segurança em IA</div>
         <img class="slide-header-logo" src="logovulcan.png" alt="Vulcan Defense">
       </div>
     </div>
@@ -840,7 +861,7 @@
         <h4>Proteção, Monitoramento & Auditoria de IA</h4>
         <ul>
           <li><strong>Proteção de IA & LLM:</strong> Defesa contra Prompt Injection, Data Poisoning, vazamento de modelo (Model Inversion) e alucinações críticas.</li>
-          <li><strong>Monitoramento de Prompts & Data Leakage:</strong> Filtros de tempo real para evitar vazamento de dados sensíveis (PII/segredos) via ferramentas de GenAI corporativas.</li>
+          <li><strong>Monitoramento de Prompts & Data Leakage:</strong> Filtros em tempo real para evitar vazamento de dados sensíveis (PII/segredos) via ferramentas de GenAI corporativas.</li>
           <li><strong>Auditoria & Vulnerabilidades em IA:</strong> Pentest e Red Teaming em aplicações com LLM, validação de permissões e segurança da cadeia de suprimentos de dados (Data Pipeline).</li>
           <li><strong>Avisos de Risco & Shadow AI:</strong> Identificação e bloqueio de ferramentas não autorizadas de IA na rede corporativa.</li>
         </ul>
@@ -856,13 +877,60 @@
       </div>
     </div>
     <div class="footer-info">
-      <span>Vulcan Defense - AI Security & Governance</span>
+      <span>Vulcan Defense - Segurança em IA & Governança</span>
       <span>Página 14</span>
     </div>
   </div>
 
-  <!-- SLIDE 15: MODELOS DE CONTRATAÇÃO & MÉTODO DE ENTREGA -->
-  <div class="slide">
+  <!-- SLIDE 15: PLATAFORMA VULCAN CYBERSHIELD -->
+  <div class="slide" id="slide-15">
+    <div class="slide-header">
+      <div class="slide-header-left">
+        <h3>Plataforma Proprietária</h3>
+        <h1>Plataforma Vulcan CyberShield</h1>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div class="slide-badge">Agent, SOC & Infra</div>
+        <img class="slide-header-logo" src="logovulcan.png" alt="Vulcan Defense">
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <h4>Agent Endpoint (Vulcan Agent)</h4>
+        <ul>
+          <li><strong>Telemetria Nativa:</strong> Coleta contínua de eventos do sistema operacional (Windows, Linux, macOS)[cite: 1, 2].</li>
+          <li><strong>FIM & SCA:</strong> File Integrity Monitoring e Software Composition Analysis diretamente no host[cite: 1, 2].</li>
+          <li><strong>Inventário & PatchMon:</strong> Gestão de ativos e monitoramento de atualizações em tempo real[cite: 1, 2].</li>
+          <li><strong>Resposta Ativa:</strong> Contenção automatizada e isolamento de rede do endpoint comprometido[cite: 1, 2].</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Cockpit SOC & Correlação</h4>
+        <ul>
+          <li><strong>Centralização Multi-Tenant:</strong> Cockpit unificado para visualização de alertas e gestão de incidentes[cite: 1, 2].</li>
+          <li><strong>Motor SIEM/XDR:</strong> Regras de correlação cruzada entre logs de infraestrutura e eventos de endpoint[cite: 1, 2].</li>
+          <li><strong>Mapeamento ATT&CK:</strong> Alertas categorizados por táticas e técnicas de invasores em tempo real[cite: 1, 2].</li>
+          <li><strong>Automação de Playbooks:</strong> Orquestração de ações de mitigação rápida via SOAR[cite: 1, 2].</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Infraestrutura & Visibilidade OT</h4>
+        <ul>
+          <li><strong>Módulo OT/ICS (CyberShield OT):</strong> Leitura e monitoramento de tráfego/protocolos industriais (Modbus, OPC-UA)[cite: 1, 2].</li>
+          <li><strong>Infraestrutura Híbrida:</strong> Coleta unificada de logs de Cloud (AWS/Azure), Redes, Firewalls e Servidores[cite: 1, 2].</li>
+          <li><strong>Hardening & Compliance:</strong> Avaliação contínua da postura de segurança contra baselines CIS[cite: 1, 2].</li>
+          <li><strong>Resiliência Operacional:</strong> Alta disponibilidade, escalabilidade e arquitetura distribuída.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-info">
+      <span>Vulcan CyberShield - Endpoint, SOC & Infrastructure Platform</span>
+      <span>Página 15</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 16: MODELOS DE CONTRATAÇÃO & MÉTODO DE ENTREGA -->
+  <div class="slide" id="slide-16">
     <div class="slide-header">
       <div class="slide-header-left">
         <h3>Engajamento Comercial</h3>
@@ -879,11 +947,11 @@
       <div class="grid-3">
         <div class="card">
           <h4 style="font-size: 0.95rem;">Projeto Fechado</h4>
-          <p style="font-size: 0.82rem; color: var(--text-muted);">Escopo, prazo e entregáveis delimitados (Pentests, Assessments, Auditorias de IA)[cite: 1, 2].</p>
+          <p style="font-size: 0.82rem; color: var(--text-muted);">Escopo, prazo e entregáveis delimitados (Pentests, Assessments, Implantação Vulcan Agent)[cite: 1, 2].</p>
         </div>
         <div class="card">
           <h4 style="font-size: 0.95rem;">Serviço Gerenciado (MSS/MDR)</h4>
-          <p style="font-size: 0.82rem; color: var(--text-muted);">Operação contínua 24x7 com garantias de SLA (SOC, Exposure, Monitoramento de IA)[cite: 1, 2].</p>
+          <p style="font-size: 0.82rem; color: var(--text-muted);">Operação contínua 24x7 com garantias de SLA (SOC, Vulcan CyberShield, Exposure)[cite: 1, 2].</p>
         </div>
         <div class="card">
           <h4 style="font-size: 0.95rem;">Squad Especializado / Retainer</h4>
@@ -930,15 +998,15 @@
 
     <div class="footer-info">
       <span>Vulcan Defense - Execution Framework</span>
-      <span>Página 15</span>
+      <span>Página 16</span>
     </div>
   </div>
 
-  <!-- SLIDE 16: ENCERRAMENTO E CONTATO -->
-  <div class="slide cover-slide" style="min-height: 500px;">
+  <!-- SLIDE 17: ENCERRAMENTO E CONTATO -->
+  <div class="slide cover-slide" id="slide-17" style="min-height: 500px;">
     <img class="cover-logo-img" src="logovulcan.png" alt="Vulcan Defense">
     <h1 class="cover-title" style="font-size: 2.2rem;">VULCAN DEFENSE</h1>
-    <p style="color: var(--gold-primary); font-size: 1.1rem; margin-bottom: 24px;">Operações de Ciber Segurança</p>
+    <p style="color: var(--gold-primary); font-size: 1.1rem; margin-bottom: 24px;">Cyber Defense Operations</p>
     
     <div style="background: #151b28; border: 1px solid #222c40; border-radius: 12px; padding: 24px; max-width: 500px; width: 100%; margin-bottom: 24px;">
       <p style="margin-bottom: 8px; color: var(--text-main);">🌐 <strong>Web:</strong> vulcandefense.com.br</p>
@@ -947,7 +1015,7 @@
     </div>
 
     <div style="font-size: 0.8rem; color: var(--text-muted);">
-      Segurança da Informação • SOC/MDR • AI Security • AppSec • DevSecOps • OT/ICS • GRC • Incident Response
+      Segurança da Informação • SOC/MDR • Vulcan CyberShield • Segurança em IA • AppSec • DevSecOps • OT/ICS • GRC • Incident Response
     </div>
   </div>
 
