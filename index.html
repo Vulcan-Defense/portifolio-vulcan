@@ -273,6 +273,85 @@
       line-height: 1.4;
     }
 
+    .ai-defense-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .ai-defense-intro {
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 62ch;
+      margin-bottom: 18px;
+    }
+
+    .ai-defense-capabilities {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .ai-defense-capability {
+      background: rgba(56, 189, 248, 0.045);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      border-left: 3px solid var(--accent-blue);
+      border-radius: 10px;
+      padding: 15px;
+    }
+
+    .ai-defense-capability h4 {
+      color: var(--gold-bright);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.98rem;
+      margin-bottom: 7px;
+    }
+
+    .ai-defense-capability p {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+
+    .ai-defense-media {
+      display: grid;
+      gap: 12px;
+    }
+
+    .ai-defense-media figure {
+      margin: 0;
+      overflow: hidden;
+      background: #0a0d14;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+    }
+
+    .ai-defense-media img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    .ai-defense-media figcaption {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      padding: 9px 11px;
+    }
+
+    @media (max-width: 760px) {
+      .deck-container { padding: 12px; }
+      .slide { min-height: auto; padding: 24px 20px; margin-bottom: 20px; }
+      .slide-header { align-items: flex-start; gap: 14px; }
+      .slide-header-left h1 { font-size: 1.35rem; }
+      .slide-header-logo { display: none; }
+      .grid-2, .grid-3, .grid-4, .ai-defense-layout, .ai-defense-capabilities { grid-template-columns: 1fr; }
+      .footer-info { align-items: flex-start; gap: 6px; flex-direction: column; }
+      .action-bar { top: 12px; right: 12px; }
+      .btn-pdf { padding: 10px 14px; font-size: 0.8rem; }
+    }
+
     @media print {
       @page {
         size: A4 landscape;
@@ -823,7 +902,7 @@
     </div>
   </div>
 
-  <!-- SLIDE 14: SEGURANÇA EM IA (SLIDE ATUALIZADO) -->
+  <!-- SLIDE 14: SEGURANÇA EM IA -->
   <div class="slide">
     <div class="slide-header">
       <div class="slide-header-left">
@@ -835,24 +914,37 @@
         <img class="slide-header-logo" src="logovulcan.png" alt="Vulcan Defense">
       </div>
     </div>
-    <div class="grid-2">
-      <div class="card">
-        <h4>Proteção, Monitoramento & Auditoria de IA</h4>
-        <ul>
-          <li><strong>Proteção de IA & LLM:</strong> Defesa contra Prompt Injection, Data Poisoning, vazamento de modelo (Model Inversion) e alucinações críticas.</li>
-          <li><strong>Monitoramento de Prompts & Data Leakage:</strong> Filtros em tempo real para evitar vazamento de dados sensíveis (PII/segredos) via ferramentas de GenAI corporativas.</li>
-          <li><strong>Auditoria & Vulnerabilidades em IA:</strong> Pentest e Red Teaming em aplicações com LLM, validação de permissões e segurança da cadeia de suprimentos de dados (Data Pipeline).</li>
-          <li><strong>Avisos de Risco & Shadow AI:</strong> Identificação e bloqueio de ferramentas não autorizadas de IA na rede corporativa.</li>
-        </ul>
+    <div class="ai-defense-layout">
+      <div>
+        <p class="ai-defense-intro">Proteção prática para modelos, aplicações e agentes de IA antes de chegarem à produção. Avaliamos controles técnicos, caminhos de abuso e os pontos que exigem aprovação humana.</p>
+        <div class="ai-defense-capabilities">
+          <article class="ai-defense-capability">
+            <h4>Engenharia reversa</h4>
+            <p>Avaliação de extração de modelos, vazamento de prompts, exposição de pesos e abuso de APIs.</p>
+          </article>
+          <article class="ai-defense-capability">
+            <h4>Hardening de IA</h4>
+            <p>Identidade, segredos, segmentação, limites, telemetria e configurações seguras durante todo o ciclo de vida.</p>
+          </article>
+          <article class="ai-defense-capability">
+            <h4>Agentes governados</h4>
+            <p>Privilégio mínimo, ferramentas autorizadas, validação de ações e rastreabilidade por execução.</p>
+          </article>
+          <article class="ai-defense-capability">
+            <h4>Revisão especializada</h4>
+            <p>Threat modeling, revisão de arquitetura e testes de prompt injection, data poisoning e tool abuse.</p>
+          </article>
+        </div>
       </div>
-      <div class="card">
-        <h4>Políticas, Boas Práticas & Compliance</h4>
-        <ul>
-          <li><strong>Políticas de Uso Aceitável de GenAI:</strong> Criação de diretrizes claras para utilização segura de inteligência artificial por colaboradores e desenvolvedores.</li>
-          <li><strong>Governança & AI Risk Assessment:</strong> Mapeamento de riscos éticos, viés algorítmico, privacidade e direitos autorais associados ao uso de IA.</li>
-          <li><strong>Frameworks de Referência:</strong> OWASP Top 10 for LLM Applications, NIST AI Risk Management Framework (AI RMF 1.0) e ISO/IEC 42001 (Sistema de Gestão de IA).</li>
-          <li><strong>Entregáveis:</strong> Política de Uso de IA, Relatório de Auditoria de LLMs, Matriz de Riscos de GenAI e treinamentos específicos de AI Safety.</li>
-        </ul>
+      <div class="ai-defense-media">
+        <figure>
+          <img src="ai-security-model-defense.png" alt="Modelo de IA protegido por controles de segurança">
+          <figcaption>Defesa de modelos e APIs contra extração e uso indevido.</figcaption>
+        </figure>
+        <figure>
+          <img src="ai-security-agent-governance.png" alt="Agentes de IA sob controles e aprovação">
+          <figcaption>Agentes com permissões explícitas, validação e revisão.</figcaption>
+        </figure>
       </div>
     </div>
     <div class="footer-info">
