@@ -387,13 +387,58 @@
     .pqc-kem-table td { color: var(--text-muted); }
     .pqc-kem-table .reference { color: var(--accent-green); font-weight: 700; }
 
+    .mlkem-demo-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.16fr) minmax(280px, 0.84fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .mlkem-demo-panel {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.09), rgba(52, 211, 153, 0.05));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .mlkem-demo-panel h4 { color: var(--gold-bright); font-family: 'Space Grotesk', sans-serif; font-size: 1.12rem; margin-bottom: 10px; }
+    .mlkem-demo-panel p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.55; max-width: 60ch; }
+
+    .mlkem-run {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright));
+      border: 0;
+      border-radius: 8px;
+      color: #09101a;
+      cursor: pointer;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin: 18px 0 12px;
+      padding: 12px 16px;
+    }
+
+    .mlkem-run:hover:not(:disabled) { filter: brightness(1.07); }
+    .mlkem-run:focus-visible { outline: 3px solid var(--accent-blue); outline-offset: 3px; }
+    .mlkem-run:disabled { cursor: wait; opacity: 0.72; }
+    .mlkem-status { color: var(--text-muted); font-size: 0.82rem; line-height: 1.45; }
+
+    .mlkem-result {
+      border-left: 3px solid var(--accent-green);
+      color: var(--text-main);
+      font-size: 0.84rem;
+      line-height: 1.5;
+      margin-top: 16px;
+      padding: 10px 12px;
+      background: rgba(52, 211, 153, 0.07);
+    }
+
     @media (max-width: 760px) {
       .deck-container { padding: 12px; }
       .slide { min-height: auto; padding: 24px 20px; margin-bottom: 20px; }
       .slide-header { align-items: flex-start; gap: 14px; }
       .slide-header-left h1 { font-size: 1.35rem; }
       .slide-header-logo { display: none; }
-      .grid-2, .grid-3, .grid-4, .superinteligencia-defense-layout, .superinteligencia-defense-capabilities, .pqc-kem-layout { grid-template-columns: 1fr; }
+      .grid-2, .grid-3, .grid-4, .superinteligencia-defense-layout, .superinteligencia-defense-capabilities, .pqc-kem-layout, .mlkem-demo-layout { grid-template-columns: 1fr; }
       .footer-info { align-items: flex-start; gap: 6px; flex-direction: column; }
       .action-bar { top: 12px; right: 12px; }
       .btn-pdf { padding: 10px 14px; font-size: 0.8rem; }
@@ -1055,7 +1100,43 @@
     </div>
   </div>
 
-  <!-- SLIDE 16: MODELOS DE CONTRATAÇÃO & MÉTODO DE ENTREGA -->
+  <!-- SLIDE 16: DEMONSTRAÇÃO FUNCIONAL ML-KEM -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-header-left">
+        <h3>Validação Local</h3>
+        <h1>ML-KEM-768 em execução no navegador</h1>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div class="slide-badge">Sem envio de chaves</div>
+        <img class="slide-header-logo" src="logovulcan.png" alt="Vulcan Defense">
+      </div>
+    </div>
+    <div class="mlkem-demo-layout">
+      <section class="mlkem-demo-panel" aria-labelledby="mlkem-demo-title">
+        <h4 id="mlkem-demo-title">Executar encapsulamento e decapsulamento</h4>
+        <p>Este teste usa ML-KEM-768 para gerar localmente um par de chaves, encapsular um segredo compartilhado e recuperá-lo pela chave privada. A página não transmite, armazena ou exibe material criptográfico.</p>
+        <button class="mlkem-run" id="mlkem-run" type="button">Executar validação ML-KEM-768</button>
+        <p class="mlkem-status" id="mlkem-status" role="status" aria-live="polite">Pronto para executar. O resultado será exibido neste dispositivo.</p>
+        <div class="mlkem-result" id="mlkem-result" hidden></div>
+      </section>
+      <div class="card">
+        <h4>O que esta validação comprova</h4>
+        <ul>
+          <li>Geração de chave, encapsulamento e decapsulamento ML-KEM-768 conformes ao FIPS 203.</li>
+          <li>Correspondência do segredo compartilhado entre as duas partes da demonstração.</li>
+          <li>Execução local com limpeza dos buffers ao término do teste.</li>
+        </ul>
+        <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin-top: 16px;">Esta demonstração não altera o TLS do GitHub Pages nem substitui uma implantação de PQC em servidores, APIs ou gateways.</p>
+      </div>
+    </div>
+    <div class="footer-info">
+      <span>Vulcan Defense - Demonstração local de ML-KEM</span>
+      <span>Página 16</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 17: MODELOS DE CONTRATAÇÃO & MÉTODO DE ENTREGA -->
   <div class="slide">
     <div class="slide-header">
       <div class="slide-header-left">
@@ -1124,11 +1205,11 @@
 
     <div class="footer-info">
       <span>Vulcan Defense - Execution Framework</span>
-      <span>Página 16</span>
+      <span>Página 17</span>
     </div>
   </div>
 
-  <!-- SLIDE 17: ENCERRAMENTO E CONTATO -->
+  <!-- SLIDE 18: ENCERRAMENTO E CONTATO -->
   <div class="slide cover-slide" style="min-height: 500px;">
     <img class="cover-logo-img" src="logovulcan.png" alt="Vulcan Defense">
     <h1 class="cover-title" style="font-size: 2.2rem;">VULCAN DEFENSE</h1>
@@ -1147,5 +1228,6 @@
 
 </div>
 
+<script type="module" src="assets/ml-kem-demo.js"></script>
 </body>
 </html>
