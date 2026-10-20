@@ -340,13 +340,60 @@
       padding: 9px 11px;
     }
 
+    .pqc-kem-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .pqc-kem-lede {
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 62ch;
+      margin-bottom: 18px;
+    }
+
+    .pqc-kem-callout {
+      border-left: 3px solid var(--accent-green);
+      background: rgba(52, 211, 153, 0.07);
+      border-radius: 0 10px 10px 0;
+      color: var(--text-main);
+      font-size: 0.88rem;
+      line-height: 1.55;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+    }
+
+    .pqc-kem-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    .pqc-kem-table th,
+    .pqc-kem-table td {
+      border-bottom: 1px solid var(--card-border);
+      padding: 10px 8px;
+      text-align: left;
+    }
+
+    .pqc-kem-table th {
+      color: var(--gold-bright);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+    }
+
+    .pqc-kem-table td { color: var(--text-muted); }
+    .pqc-kem-table .reference { color: var(--accent-green); font-weight: 700; }
+
     @media (max-width: 760px) {
       .deck-container { padding: 12px; }
       .slide { min-height: auto; padding: 24px 20px; margin-bottom: 20px; }
       .slide-header { align-items: flex-start; gap: 14px; }
       .slide-header-left h1 { font-size: 1.35rem; }
       .slide-header-logo { display: none; }
-      .grid-2, .grid-3, .grid-4, .superinteligencia-defense-layout, .superinteligencia-defense-capabilities { grid-template-columns: 1fr; }
+      .grid-2, .grid-3, .grid-4, .superinteligencia-defense-layout, .superinteligencia-defense-capabilities, .pqc-kem-layout { grid-template-columns: 1fr; }
       .footer-info { align-items: flex-start; gap: 6px; flex-direction: column; }
       .action-bar { top: 12px; right: 12px; }
       .btn-pdf { padding: 10px 14px; font-size: 0.8rem; }
@@ -953,7 +1000,62 @@
     </div>
   </div>
 
-  <!-- SLIDE 15: MODELOS DE CONTRATAÇÃO & MÉTODO DE ENTREGA -->
+  <!-- SLIDE 15: CRIPTOGRAFIA PÓS-QUÂNTICA / ML-KEM -->
+  <div class="slide">
+    <div class="slide-header">
+      <div class="slide-header-left">
+        <h3>Resiliência Criptográfica</h3>
+        <h1>ML-KEM: troca de chaves pós-quântica</h1>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div class="slide-badge">FIPS 203</div>
+        <img class="slide-header-logo" src="logovulcan.png" alt="Vulcan Defense">
+      </div>
+    </div>
+    <div class="pqc-kem-layout">
+      <div>
+        <p class="pqc-kem-lede">Planejamento e implantação de ML-KEM para proteger a troca de chaves em comunicações que precisam resistir ao risco quântico. A abordagem começa pelo inventário criptográfico e introduz controles híbridos sem interromper serviços críticos.</p>
+        <div class="pqc-kem-callout"><strong>Implementação responsável:</strong> ML-KEM é um mecanismo de encapsulamento de chaves, não uma cifra de dados. Integramos bibliotecas e plataformas validadas ao protocolo e ao ambiente de cada cliente; não criamos primitivas criptográficas próprias.</div>
+        <div class="grid-2">
+          <div class="card">
+            <h4>Jornada de implantação</h4>
+            <ul>
+              <li>Inventário de TLS, VPN, APIs, PKI, HSM e dependências criptográficas.</li>
+              <li>Arquitetura híbrida com criptografia clássica e ML-KEM durante a transição.</li>
+              <li>Testes de interoperabilidade, desempenho, observabilidade e reversão controlada.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Entregáveis</h4>
+            <ul>
+              <li>Plano de migração pós-quântica priorizado por risco e vida útil dos dados.</li>
+              <li>Baseline de configuração, evidências de teste e runbooks operacionais.</li>
+              <li>Revisão de fornecedores, atualização de políticas e governança de chaves.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h4>Perfis aprovados pelo FIPS 203</h4>
+        <table class="pqc-kem-table">
+          <thead><tr><th>Perfil</th><th>Chave pública</th><th>Ciphertext</th></tr></thead>
+          <tbody>
+            <tr><td>ML-KEM-512</td><td>800 B</td><td>768 B</td></tr>
+            <tr><td class="reference">ML-KEM-768</td><td class="reference">1.184 B</td><td class="reference">1.088 B</td></tr>
+            <tr><td>ML-KEM-1024</td><td>1.568 B</td><td>1.568 B</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; margin-top: 14px;">A seleção do perfil é definida pela avaliação de risco, requisitos de desempenho e compatibilidade. O FIPS 203 padroniza ML-KEM-512, ML-KEM-768 e ML-KEM-1024.</p>
+        <p style="font-size: 0.78rem; margin-top: 14px;"><a href="https://csrc.nist.gov/pubs/fips/203/final" style="color: var(--accent-blue);">Consultar FIPS 203 no NIST</a></p>
+      </div>
+    </div>
+    <div class="footer-info">
+      <span>Vulcan Defense - Criptografia Pós-Quântica</span>
+      <span>Página 15</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 16: MODELOS DE CONTRATAÇÃO & MÉTODO DE ENTREGA -->
   <div class="slide">
     <div class="slide-header">
       <div class="slide-header-left">
@@ -1022,11 +1124,11 @@
 
     <div class="footer-info">
       <span>Vulcan Defense - Execution Framework</span>
-      <span>Página 15</span>
+      <span>Página 16</span>
     </div>
   </div>
 
-  <!-- SLIDE 16: ENCERRAMENTO E CONTATO -->
+  <!-- SLIDE 17: ENCERRAMENTO E CONTATO -->
   <div class="slide cover-slide" style="min-height: 500px;">
     <img class="cover-logo-img" src="logovulcan.png" alt="Vulcan Defense">
     <h1 class="cover-title" style="font-size: 2.2rem;">VULCAN DEFENSE</h1>
