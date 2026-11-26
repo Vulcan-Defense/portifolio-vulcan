@@ -3,469 +3,589 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="logovulcan.png" type="image/png">
   <title>Vulcan Defense - Portfólio Comercial & Técnico 2026</title>
+  <meta name="description" content="Portfólio comercial da Vulcan Defense: Cybershield, plataforma integrada de cibersegurança com SOC/MDR 24x7, SIEMng, EDR/XDR, exposure, resposta a incidentes, OT/ICS, AppSec e GRC.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #0a0d14;
-      --card-bg: #111622;
-      --card-border: #1e2638;
-      --gold-primary: #d4af37;
+      --bg: #070a11;
+      --bg-soft: #0b101a;
+      --surface: #111827;
+      --surface-2: #161f30;
+      --line: rgba(148, 163, 184, 0.16);
+      --line-strong: rgba(212, 175, 55, 0.28);
+      --gold: #d4af37;
       --gold-bright: #f5cf47;
-      --text-main: #f0f4fc;
-      --text-muted: #94a3b8;
-      --accent-blue: #38bdf8;
-      --accent-green: #34d399;
-      --accent-red: #f87171;
+      --text: #f4f7fc;
+      --muted: #9aa8bd;
+      --accent-blue: #45d3ff;
+      --accent-green: #4ade9f;
+      --accent-red: #fb7185;
+      --radius: 20px;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      overflow-x: hidden;
+      background: var(--bg);
+      background-image:
+        radial-gradient(900px 600px at 12% -8%, rgba(212, 175, 55, 0.10), transparent 60%),
+        radial-gradient(900px 700px at 92% 4%, rgba(69, 211, 255, 0.08), transparent 62%),
+        linear-gradient(rgba(148, 163, 184, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.035) 1px, transparent 1px);
+      background-size: auto, auto, 56px 56px, 56px 56px;
+      color: var(--text);
+      overflow-x: clip;
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
     }
 
-    /* Botão de Ação Flutuante */
-    .action-bar {
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 2px solid var(--accent-blue); outline-offset: 3px; }
+
+    .skip-link {
       position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 9999;
-      display: flex;
-      gap: 12px;
+      top: -60px;
+      left: 16px;
+      z-index: 2000;
+      background: var(--gold-bright);
+      color: #0a0d14;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 12px; }
+
+    /* NAVEGAÇÃO FIXA */
+    .topbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 1000;
+      height: 68px;
+      background: rgba(7, 10, 17, 0.86);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
     }
 
-    .btn-pdf {
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright));
-      color: #000;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 30px;
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: 0.9rem;
-      cursor: pointer;
-      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
+    .topbar-inner {
+      max-width: 1280px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 24px;
       display: flex;
       align-items: center;
-      gap: 8px;
-      transition: transform 0.2s, box-shadow 0.2s;
+      gap: 24px;
     }
 
-    .btn-pdf:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(212, 175, 55, 0.6);
+    .topbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex: 0 0 auto;
+    }
+    .topbar-brand img { height: 34px; width: auto; }
+    .topbar-brand span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.86rem;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .topbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      margin-left: auto;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .topbar-nav::-webkit-scrollbar { display: none; }
+
+    .topbar-nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 9px 12px;
+      border-radius: 8px;
+      white-space: nowrap;
+      transition: color 0.2s, background 0.2s;
+    }
+    .topbar-nav a:hover { color: var(--text); background: rgba(148, 163, 184, 0.08); }
+    .topbar-nav a.is-active { color: var(--gold-bright); background: rgba(212, 175, 55, 0.10); }
+
+    .topbar-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex: 0 0 auto;
+      background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+      color: #0a0d14;
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.22);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .topbar-action:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(212, 175, 55, 0.34); }
+
+    .scroll-progress {
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      height: 2px;
+      width: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--accent-blue));
+      transform: scaleX(0);
+      transform-origin: left center;
+      will-change: transform;
     }
 
     .deck-container {
       max-width: 1280px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 100px 24px 72px;
     }
 
     .slide {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 40px;
-      margin-bottom: 40px;
-      min-height: 680px;
+      background: linear-gradient(155deg, rgba(19, 26, 40, 0.97) 0%, rgba(10, 14, 22, 0.98) 100%);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 40px 44px;
+      margin-bottom: 32px;
+      min-height: 660px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      box-shadow: var(--shadow);
       position: relative;
+      overflow: hidden;
       page-break-after: always;
       break-after: page;
+    }
+    .slide::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), rgba(69, 211, 255, 0.55), transparent);
+      opacity: 0.75;
     }
 
     .slide-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--card-border);
-      padding-bottom: 20px;
-      margin-bottom: 24px;
-    }
-
-    .slide-header-left h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--gold-primary);
-      margin-bottom: 6px;
-    }
-
-    .slide-header-left h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.8rem;
-      color: var(--text-main);
-    }
-
-    .slide-header-logo {
-      height: 48px;
-      width: auto;
-      filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
-    }
-
-    .slide-badge {
-      background: rgba(212, 175, 55, 0.1);
-      border: 1px solid var(--gold-primary);
-      color: var(--gold-bright);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-
-    .cover-slide {
-      text-align: center;
-      justify-content: center;
-      align-items: center;
-      background: radial-gradient(circle at center, #1a2234 0%, #0a0d14 100%);
-    }
-
-    .cover-logo-img {
-      width: 200px;
-      height: auto;
-      margin-bottom: 24px;
-      filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.4));
-    }
-
-    .cover-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 3rem;
-      color: var(--text-main);
-      margin-bottom: 12px;
-      letter-spacing: -1px;
-    }
-
-    .cover-subtitle {
-      font-size: 1.25rem;
-      color: var(--gold-primary);
-      margin-bottom: 24px;
-      font-weight: 500;
-    }
-
-    .cover-tags {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      max-width: 800px;
-      margin-bottom: 30px;
-    }
-
-    .tag {
-      background: #182030;
-      border: 1px solid #28344d;
-      color: var(--text-muted);
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 0.85rem;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 22px;
+      margin-bottom: 28px;
+    }
+    .slide-header-left .slide-eyebrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold-bright);
+      margin-bottom: 8px;
+    }
+    .slide-header-left h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.5rem, 2.3vw, 2.1rem);
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+      color: var(--text);
+    }
+    .slide-header-actions { display: flex; align-items: center; gap: 14px; flex: 0 0 auto; }
+    .slide-header-logo {
+      height: 42px;
+      width: auto;
+      filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.35));
+    }
+    .slide-badge {
+      background: rgba(212, 175, 55, 0.09);
+      border: 1px solid var(--line-strong);
+      color: var(--gold-bright);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+    /* HERO */
+    .slide--cover {
+      min-height: 660px;
+      background:
+        radial-gradient(760px 520px at 78% 30%, rgba(69, 211, 255, 0.10), transparent 65%),
+        radial-gradient(700px 500px at 10% 80%, rgba(212, 175, 55, 0.10), transparent 65%),
+        linear-gradient(155deg, #131a28 0%, #080b12 100%);
+      justify-content: center;
     }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+      align-items: center;
+      gap: 48px;
+      width: 100%;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--gold-bright);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 26px;
+      height: 1px;
+      background: var(--gold-bright);
+    }
+    .hero-logo { height: 58px; width: auto; margin-bottom: 22px; filter: drop-shadow(0 0 16px rgba(212,175,55,.35)); }
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.2rem, 4.4vw, 3.7rem);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+      margin-bottom: 18px;
+    }
+    .hero-title span {
+      background: linear-gradient(100deg, var(--gold-bright), #fff3c4 55%, var(--accent-blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.65;
+      max-width: 56ch;
+      margin-bottom: 26px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 30px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border-radius: 10px;
+      padding: 13px 20px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s, filter 0.2s, border-color 0.2s;
+    }
+    .btn--primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+      color: #0a0d14;
+      border: 0;
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+    }
+    .btn--primary:hover { transform: translateY(-2px); filter: brightness(1.06); }
+    .btn--ghost { background: rgba(148, 163, 184, 0.06); color: var(--text); border: 1px solid var(--line); }
+    .btn--ghost:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+    .hero-proof { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .hero-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .hero-metric {
+      border-left: 2px solid var(--line-strong);
+      padding: 4px 0 4px 14px;
+    }
+    .hero-metric strong {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.22rem;
+      color: var(--gold-bright);
+    }
+    .hero-metric span { font-size: 0.72rem; color: var(--muted); line-height: 1.35; display: block; }
+
+    .hero-visual {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: linear-gradient(160deg, rgba(23, 32, 49, 0.95), rgba(10, 15, 24, 0.95));
+      padding: 24px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 24px 60px rgba(0,0,0,.4);
+    }
+    .visual-kicker {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 0.66rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 16px;
+    }
+    .visual-kicker b { color: var(--gold-bright); font-weight: 700; }
+    .platform-row {
+      display: grid;
+      grid-template-columns: 12px 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px dashed rgba(148, 163, 184, 0.12);
+    }
+    .platform-row:last-of-type { border-bottom: 0; }
+    .platform-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 12px rgba(212,175,55,.7); }
+    .platform-row:nth-child(3) .platform-dot,
+    .platform-row:nth-child(4) .platform-dot { background: var(--accent-blue); box-shadow: 0 0 12px rgba(69,211,255,.6); }
+    .platform-row:nth-child(5) .platform-dot,
+    .platform-row:nth-child(6) .platform-dot { background: var(--accent-green); box-shadow: 0 0 12px rgba(74,222,159,.6); }
+    .platform-name { font-weight: 600; font-size: 0.86rem; }
+    .platform-name small { display: block; color: var(--muted); font-weight: 400; font-size: 0.72rem; margin-top: 2px; }
+    .platform-row em { font-style: normal; font-size: 0.64rem; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 3px 8px; }
+    .visual-footer {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.7rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .visual-footer strong { color: var(--text); font-weight: 600; }
+
+    /* COMPONENTES GERAIS */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .grid-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
 
     .card {
-      background: #151b28;
-      border: 1px solid #222c40;
-      border-radius: 12px;
-      padding: 20px;
+      background: linear-gradient(180deg, rgba(23, 31, 47, 0.92), rgba(16, 22, 34, 0.94));
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 20px 22px;
+      transition: transform 0.2s, border-color 0.2s;
     }
-
-    .card h4 {
+    .card:hover { transform: translateY(-3px); border-color: var(--line-strong); }
+    .card h3 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--gold-bright);
       margin-bottom: 12px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
-
-    .card ul {
-      list-style: none;
-      padding: 0;
-    }
-
+    .card ul { list-style: none; }
     .card ul li {
       position: relative;
-      padding-left: 18px;
-      margin-bottom: 8px;
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.4;
+      padding-left: 16px;
+      margin-bottom: 9px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.55;
     }
-
     .card ul li::before {
-      content: "•";
+      content: '';
       position: absolute;
       left: 0;
-      color: var(--gold-primary);
-      font-weight: bold;
+      top: 0.62em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
     }
+    .card ul li strong { color: var(--text); font-weight: 600; }
+    .card p { font-size: 0.85rem; color: var(--muted); line-height: 1.55; }
+    .card p strong { color: var(--text); }
+
+    .section-lead { color: var(--muted); font-size: 0.94rem; line-height: 1.65; max-width: 68ch; margin-bottom: 24px; }
+    .section-lead strong { color: var(--text); }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: rgba(148, 163, 184, 0.05);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 6px 11px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .chip--core { color: var(--gold-bright); border-color: var(--line-strong); background: rgba(212, 175, 55, 0.09); }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 
     .footer-info {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 1px solid var(--card-border);
+      gap: 16px;
+      border-top: 1px solid var(--line);
       padding-top: 16px;
-      margin-top: 20px;
-      font-size: 0.8rem;
-      color: var(--text-muted);
+      margin-top: 24px;
+      font-size: 0.76rem;
+      color: var(--muted);
     }
+    .footer-info span:last-child { color: var(--gold); font-family: 'Space Grotesk', sans-serif; letter-spacing: 0.08em; }
 
-    .method-step {
-      background: #151b28;
-      border-top: 3px solid var(--gold-primary);
-      border-radius: 8px;
-      padding: 16px;
-    }
-
-    .method-step-num {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--gold-bright);
-      margin-bottom: 4px;
-    }
-
-    .method-step-title {
-      font-weight: 600;
-      color: var(--text-main);
-      margin-bottom: 8px;
-    }
-
-    .method-step-desc {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.4;
-    }
-
-    .superinteligencia-defense-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
-      gap: 24px;
-      align-items: start;
-    }
-
-    .superinteligencia-defense-intro {
-      color: var(--text-muted);
-      line-height: 1.6;
-      max-width: 62ch;
-      margin-bottom: 18px;
-    }
-
-    .superinteligencia-defense-capabilities {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .superinteligencia-defense-capability {
-      background: rgba(56, 189, 248, 0.045);
-      border: 1px solid rgba(56, 189, 248, 0.18);
+    /* SLIDE DE PLATAFORMA */
+    .platform-layout { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr); gap: 28px; align-items: start; }
+    .pillar-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 20px; }
+    .pillar {
+      background: rgba(69, 211, 255, 0.045);
+      border: 1px solid rgba(69, 211, 255, 0.16);
       border-left: 3px solid var(--accent-blue);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 15px;
     }
+    .pillar h3 { font-family: 'Space Grotesk', sans-serif; font-size: 0.92rem; color: var(--gold-bright); margin-bottom: 6px; }
+    .pillar p { font-size: 0.79rem; color: var(--muted); line-height: 1.5; }
 
-    .superinteligencia-defense-capability h4 {
-      color: var(--gold-bright);
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.98rem;
-      margin-bottom: 7px;
+    .console {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: linear-gradient(160deg, rgba(22, 31, 48, 0.98), rgba(9, 13, 21, 0.98));
+      padding: 22px;
+      box-shadow: var(--shadow);
     }
+    .console-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+    .console-head b { font-family: 'Space Grotesk', sans-serif; font-size: 0.86rem; }
+    .console-head span { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-green); }
+    .console-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .kpi { background: rgba(148, 163, 184, 0.05); border: 1px solid var(--line); border-radius: 11px; padding: 14px; }
+    .kpi strong { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; color: var(--text); }
+    .kpi span { font-size: 0.68rem; color: var(--muted); }
+    .flow { margin-top: 18px; display: grid; gap: 8px; }
+    .flow-step { display: flex; align-items: center; gap: 10px; font-size: 0.76rem; color: var(--muted); }
+    .flow-step b { font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; color: var(--gold-bright); width: 22px; }
+    .flow-step::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--line-strong), transparent); }
 
-    .superinteligencia-defense-capability p {
-      color: var(--text-muted);
-      font-size: 0.82rem;
-      line-height: 1.45;
+    /* SLIDE DE STACKS */
+    .stack-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .stack-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(22, 31, 47, 0.9), rgba(13, 18, 28, 0.94));
+      padding: 18px;
+      transition: transform 0.2s, border-color 0.2s;
     }
+    .stack-card:hover { transform: translateY(-3px); border-color: var(--line-strong); }
+    .stack-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .stack-index { font-family: 'Space Grotesk', sans-serif; font-size: 0.68rem; color: var(--gold-bright); border: 1px solid var(--line-strong); border-radius: 6px; padding: 3px 6px; }
+    .stack-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 0.94rem; }
+    .stack-card p { color: var(--muted); font-size: 0.78rem; line-height: 1.5; margin-bottom: 14px; }
 
-    .superinteligencia-defense-media {
-      display: grid;
-      gap: 12px;
-    }
+    /* MÉTODO / PREVENIR-DETECTAR */
+    .method-step { background: rgba(23, 31, 47, 0.9); border: 1px solid var(--line); border-top: 2px solid var(--gold); border-radius: 11px; padding: 15px; }
+    .method-step-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--gold-bright); margin-bottom: 4px; }
+    .method-step-title { font-weight: 600; font-size: 0.86rem; color: var(--text); margin-bottom: 7px; }
+    .method-step-desc { font-size: 0.76rem; color: var(--muted); line-height: 1.45; }
 
-    .superinteligencia-defense-media figure {
-      margin: 0;
-      overflow: hidden;
-      background: #0a0d14;
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-    }
+    /* CONTEÚDOS ESPECIAIS EXISTENTES */
+    .superinteligencia-defense-layout { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr); gap: 24px; align-items: start; }
+    .superinteligencia-defense-intro { color: var(--muted); line-height: 1.6; font-size: 0.92rem; max-width: 62ch; margin-bottom: 18px; }
+    .superinteligencia-defense-capabilities { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .superinteligencia-defense-capability { background: rgba(69, 211, 255, 0.045); border: 1px solid rgba(69, 211, 255, 0.16); border-left: 3px solid var(--accent-blue); border-radius: 10px; padding: 15px; }
+    .superinteligencia-defense-capability h3 { color: var(--gold-bright); font-family: 'Space Grotesk', sans-serif; font-size: 0.92rem; margin-bottom: 7px; }
+    .superinteligencia-defense-capability p { color: var(--muted); font-size: 0.79rem; line-height: 1.5; }
+    .superinteligencia-defense-media { display: grid; gap: 12px; }
+    .superinteligencia-defense-media figure { margin: 0; overflow: hidden; background: #0a0d14; border: 1px solid var(--line); border-radius: 12px; }
+    .superinteligencia-defense-media img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+    .superinteligencia-defense-media figcaption { color: var(--muted); font-size: 0.74rem; padding: 9px 11px; }
 
-    .superinteligencia-defense-media img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-    }
-
-    .superinteligencia-defense-media figcaption {
-      color: var(--text-muted);
-      font-size: 0.78rem;
-      padding: 9px 11px;
-    }
-
-    .pqc-kem-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
-      gap: 24px;
-      align-items: start;
-    }
-
-    .pqc-kem-lede {
-      color: var(--text-muted);
-      line-height: 1.6;
-      max-width: 62ch;
-      margin-bottom: 18px;
-    }
-
-    .pqc-kem-callout {
-      border-left: 3px solid var(--accent-green);
-      background: rgba(52, 211, 153, 0.07);
-      border-radius: 0 10px 10px 0;
-      color: var(--text-main);
-      font-size: 0.88rem;
-      line-height: 1.55;
-      padding: 14px 16px;
-      margin-bottom: 16px;
-    }
-
-    .pqc-kem-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.82rem;
-    }
-
-    .pqc-kem-table th,
-    .pqc-kem-table td {
-      border-bottom: 1px solid var(--card-border);
-      padding: 10px 8px;
-      text-align: left;
-    }
-
-    .pqc-kem-table th {
-      color: var(--gold-bright);
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 600;
-    }
-
-    .pqc-kem-table td { color: var(--text-muted); }
+    .pqc-kem-layout { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr); gap: 24px; align-items: start; }
+    .pqc-kem-lede { color: var(--muted); font-size: 0.92rem; line-height: 1.6; max-width: 62ch; margin-bottom: 18px; }
+    .pqc-kem-callout { border-left: 3px solid var(--accent-green); background: rgba(74, 222, 159, 0.07); border-radius: 0 10px 10px 0; color: var(--text); font-size: 0.84rem; line-height: 1.55; padding: 14px 16px; margin-bottom: 16px; }
+    .pqc-kem-table { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
+    .pqc-kem-table th, .pqc-kem-table td { border-bottom: 1px solid var(--line); padding: 10px 8px; text-align: left; }
+    .pqc-kem-table th { color: var(--gold-bright); font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
+    .pqc-kem-table td { color: var(--muted); }
     .pqc-kem-table .reference { color: var(--accent-green); font-weight: 700; }
 
-    .mlkem-demo-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.16fr) minmax(280px, 0.84fr);
-      gap: 24px;
-      align-items: stretch;
-    }
-
-    .mlkem-demo-panel {
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.09), rgba(52, 211, 153, 0.05));
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      border-radius: 12px;
-      padding: 24px;
-    }
-
-    .mlkem-demo-panel h4 { color: var(--gold-bright); font-family: 'Space Grotesk', sans-serif; font-size: 1.12rem; margin-bottom: 10px; }
-    .mlkem-demo-panel p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.55; max-width: 60ch; }
-
-    .mlkem-run {
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright));
-      border: 0;
-      border-radius: 8px;
-      color: #09101a;
-      cursor: pointer;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.92rem;
-      font-weight: 700;
-      margin: 18px 0 12px;
-      padding: 12px 16px;
-    }
-
+    .mlkem-demo-layout { display: grid; grid-template-columns: minmax(0, 1.16fr) minmax(280px, 0.84fr); gap: 24px; align-items: stretch; }
+    .mlkem-demo-panel { background: linear-gradient(135deg, rgba(69, 211, 255, 0.09), rgba(74, 222, 159, 0.05)); border: 1px solid rgba(69, 211, 255, 0.26); border-radius: 12px; padding: 24px; }
+    .mlkem-demo-panel h3 { color: var(--gold-bright); font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; margin-bottom: 10px; }
+    .mlkem-demo-panel p { color: var(--muted); font-size: 0.85rem; line-height: 1.55; max-width: 60ch; }
+    .mlkem-run { background: linear-gradient(135deg, var(--gold), var(--gold-bright)); border: 0; border-radius: 8px; color: #09101a; cursor: pointer; font-family: 'Space Grotesk', sans-serif; font-size: 0.88rem; font-weight: 700; margin: 18px 0 12px; padding: 12px 16px; }
     .mlkem-run:hover:not(:disabled) { filter: brightness(1.07); }
-    .mlkem-run:focus-visible { outline: 3px solid var(--accent-blue); outline-offset: 3px; }
-    .mlkem-run:disabled { cursor: wait; opacity: 0.72; }
-    .mlkem-status { color: var(--text-muted); font-size: 0.82rem; line-height: 1.45; }
+    .mlkem-status { color: var(--muted); font-size: 0.79rem; line-height: 1.45; }
+    .mlkem-result { border-left: 3px solid var(--accent-green); color: var(--text); font-size: 0.81rem; line-height: 1.5; margin-top: 16px; padding: 10px 12px; background: rgba(74, 222, 159, 0.07); }
 
-    .mlkem-result {
-      border-left: 3px solid var(--accent-green);
-      color: var(--text-main);
-      font-size: 0.84rem;
-      line-height: 1.5;
-      margin-top: 16px;
-      padding: 10px 12px;
-      background: rgba(52, 211, 153, 0.07);
+    /* CONTATO */
+    .contact-panel {
+      width: min(100%, 760px);
+      background: linear-gradient(160deg, rgba(23, 31, 47, 0.94), rgba(10, 15, 24, 0.96));
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px;
+      margin: 0 auto 24px;
+      text-align: left;
+    }
+    .contact-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .contact-item { border: 1px solid var(--line); border-radius: 12px; padding: 16px; text-decoration: none; display: block; transition: border-color 0.2s, transform 0.2s; }
+    .contact-item:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+    .contact-item span { display: block; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-bright); margin-bottom: 8px; }
+    .contact-item strong { font-size: 0.84rem; font-weight: 600; line-height: 1.45; word-break: break-word; }
+    .contact-note { color: var(--muted); font-size: 0.8rem; text-align: center; margin-top: 20px; line-height: 1.6; }
+    .cover-cta { margin-top: 8px; }
+
+    @media (max-width: 960px) {
+      .topbar-brand span { display: none; }
+      .topbar-nav { flex: 1 1 auto; min-width: 0; }
+      .topbar-nav a { padding: 8px 9px; font-size: 0.74rem; }
+      .hero, .platform-layout, .superinteligencia-defense-layout, .pqc-kem-layout, .mlkem-demo-layout { grid-template-columns: 1fr; }
+      .hero-visual { max-width: 560px; }
+      .stack-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid-6 { grid-template-columns: repeat(3, 1fr); }
     }
 
     @media (max-width: 760px) {
-      .deck-container { padding: 12px; }
-      .slide { min-height: auto; padding: 24px 20px; margin-bottom: 20px; }
-      .slide-header { align-items: flex-start; gap: 14px; }
-      .slide-header-left h1 { font-size: 1.35rem; }
-      .slide-header-logo { display: none; }
-      .grid-2, .grid-3, .grid-4, .superinteligencia-defense-layout, .superinteligencia-defense-capabilities, .pqc-kem-layout, .mlkem-demo-layout { grid-template-columns: 1fr; }
+      html { scroll-padding-top: 76px; }
+      .topbar-inner { padding: 0 14px; gap: 10px; }
+      .topbar-action { padding: 9px 12px; font-size: 0.72rem; }
+      .topbar-action-label { display: none; }
+      .deck-container { padding: 84px 12px 48px; }
+      .slide { min-height: auto; padding: 26px 20px; margin-bottom: 18px; border-radius: 16px; }
+      .slide-header { align-items: flex-start; gap: 12px; margin-bottom: 20px; }
+      .slide-header-left h2 { font-size: 1.35rem; }
+      .slide-header-actions .slide-badge { display: none; }
+      .slide-header-logo { height: 34px; }
+      .grid-2, .grid-3, .grid-4, .grid-6, .superinteligencia-defense-capabilities, .pillar-grid, .stack-grid, .contact-grid, .hero-metrics, .console-grid { grid-template-columns: 1fr; }
+      .hero { gap: 28px; }
+      .hero-title { font-size: 2.15rem; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .hero-metrics { gap: 10px; }
       .footer-info { align-items: flex-start; gap: 6px; flex-direction: column; }
-      .action-bar { top: 12px; right: 12px; }
-      .btn-pdf { padding: 10px 14px; font-size: 0.8rem; }
+      .contact-panel { padding: 20px; }
     }
 
     @media print {
-      @page {
-        size: A4 landscape;
-        margin: 0;
-      }
-
-      body {
-        background-color: #0a0d14 !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-      }
-
-      .action-bar {
-        display: none !important;
-      }
-
-      .deck-container {
-        max-width: 100% !important;
-        padding: 0 !important;
-        margin: 0 !important;
-      }
-
+      @page { size: A4 landscape; margin: 0; }
+      html { scroll-behavior: auto; }
+      body { background: #070a11 !important; background-image: none !important; }
+      .topbar, .skip-link, .scroll-progress { display: none !important; }
+      .deck-container { max-width: 100% !important; padding: 0 !important; margin: 0 !important; }
       .slide {
         margin-bottom: 0 !important;
         border: none !important;
@@ -478,50 +598,201 @@
         box-sizing: border-box !important;
         padding: 30px 40px !important;
       }
+      .card:hover, .stack-card:hover { transform: none !important; }
     }
   </style>
 </head>
 <body>
 
-<div class="action-bar">
-  <button class="btn-pdf" onclick="window.print()">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-    Gerar Versão PDF
-  </button>
+<a class="skip-link" href="#plataforma">Ir para o conteúdo</a>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="topbar-brand" href="#inicio">
+      <img src="logovulcan.png" alt="Vulcan Defense">
+      <span>VULCAN DEFENSE</span>
+    </a>
+    <nav class="topbar-nav" aria-label="Navegação principal">
+      <a href="#plataforma">Plataforma</a>
+      <a href="#stacks">Stacks</a>
+      <a href="#cyber-defense">Serviços</a>
+      <a href="#setores">Setores</a>
+      <a href="#engajamento">Engajamento</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <button class="topbar-action" type="button" data-print>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+      <span class="topbar-action-label">Baixar PDF</span>
+    </button>
+    <div class="scroll-progress" aria-hidden="true"></div>
+  </div>
 </div>
 
-<div class="deck-container">
+<main class="deck-container" id="conteudo">
 
-  <!-- SLIDE 1: CAPA -->
-  <div class="slide cover-slide">
-    <img class="cover-logo-img" src="logovulcan.png" alt="Vulcan Defense Logo">
-    <h1 class="cover-title">VULCAN DEFENSE</h1>
-    <p class="cover-subtitle">PORTFÓLIO COMERCIAL & BASE TÉCNICA DE SERVIÇOS 2026</p>
-    <div class="cover-tags">
-      <span class="tag">Cyber Defense</span>
-      <span class="tag">SOC/MDR</span>
-      <span class="tag">Segurança em Superinteligência</span>
-      <span class="tag">AppSec</span>
-      <span class="tag">DevSecOps</span>
-      <span class="tag">OT/ICS</span>
-      <span class="tag">GRC</span>
-      <span class="tag">Incident Response</span>
-      <span class="tag">VulcanAcademy</span>
+  <!-- SLIDE 1: CAPA / HERO -->
+  <div class="slide slide--cover" id="inicio">
+    <div class="hero">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">Cyber Defense Operations · 24x7</p>
+        <img class="hero-logo" src="logovulcan.png" alt="Vulcan Defense">
+        <h1 class="hero-title">Segurança que opera.<br><span>Evidência que convence.</span></h1>
+        <p class="hero-subtitle">Da telemetria ao board: uma plataforma integrada de cibersegurança que detecta, responde e prova o valor de cada controle. Feita para ambientes corporativos, regulados, industriais e estratégicos.</p>
+        <div class="hero-actions">
+          <a class="btn btn--primary" href="#plataforma">Conhecer a Cybershield
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg>
+          </a>
+          <a class="btn btn--ghost" href="#contato">Falar com especialista</a>
+        </div>
+        <div class="hero-proof">
+          <span class="chip chip--core">Cybershield · plataforma integrada</span>
+          <span class="chip">NIST CSF 2.0</span>
+          <span class="chip">MITRE ATT&amp;CK</span>
+          <span class="chip">ISO 27001</span>
+          <span class="chip">IEC 62443</span>
+          <span class="chip">FIPS 203</span>
+        </div>
+        <div class="hero-metrics">
+          <div class="hero-metric"><strong>01</strong><span>plataforma unificada de segurança</span></div>
+          <div class="hero-metric"><strong>24x7</strong><span>operação e resposta contínuas</span></div>
+          <div class="hero-metric"><strong>06</strong><span>frentes de atuação especializadas</span></div>
+        </div>
+      </div>
+      <aside class="hero-visual" aria-label="Módulos integrados da plataforma Cybershield">
+        <div class="visual-kicker"><span>Cybershield</span><b>Control plane</b></div>
+        <div class="platform-row"><span class="platform-dot"></span><span class="platform-name">Cibershield SIEMng<small>Correlação, detecção e casos de uso</small></span><em>Core</em></div>
+        <div class="platform-row"><span class="platform-dot"></span><span class="platform-name">Vulcan EDR/XDR<small>Telemetria de endpoint e contenção</small></span><em>Endpoint</em></div>
+        <div class="platform-row"><span class="platform-dot"></span><span class="platform-name">Vulcan Exposure<small>Risco priorizado até a remediação</small></span><em>Risk</em></div>
+        <div class="platform-row"><span class="platform-dot"></span><span class="platform-name">Vulcan Response<small>Forense, playbooks e recuperação</small></span><em>IR</em></div>
+        <div class="platform-row"><span class="platform-dot"></span><span class="platform-name">CyberShield OT<small>Protocolos industriais e Purdue</small></span><em>OT</em></div>
+        <div class="platform-row"><span class="platform-dot"></span><span class="platform-name">VulcanAcademy<small>Cultura, labs e Security Champions</small></span><em>People</em></div>
+        <div class="visual-footer"><strong>Telemetria → Detecção → Resposta → Evidência</strong><br>um único ciclo operacional, uma única fonte de verdade.</div>
+      </aside>
     </div>
-    <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 650px;">
-      Proteção contínua e capacidade operacional integrada para ambientes corporativos, regulados, industriais e estratégicos.
-    </p>
-    <div style="margin-top: 40px; font-size: 0.85rem; color: var(--text-muted);">
-      VULCAN DEFENSE LTDA - ME | CNPJ 51.530.057/0001-33
+  </div>
+
+  <!-- SLIDE 2: PLATAFORMA CYBERSHIELD -->
+  <div class="slide" id="plataforma">
+    <div class="slide-header">
+      <div class="slide-header-left">
+        <p class="slide-eyebrow">Plataforma Própria</p>
+        <h2>Cybershield: uma plataforma, inteligência conectada</h2>
+      </div>
+      <div class="slide-header-actions">
+        <div class="slide-badge">Plataforma Integrada</div>
+        <img class="slide-header-logo" src="logovulcan.png" alt="Vulcan Defense">
+      </div>
+    </div>
+    <div class="platform-layout">
+      <div>
+        <p class="section-lead"><strong>Cybershield</strong> conecta coleta, detecção, resposta e evidência em um único modelo operacional. Em vez de ferramentas isoladas, a equipe trabalha com contexto compartilhado, priorização por risco e trilhas de auditoria prontas para o board e para a auditoria.</p>
+        <div class="pillar-grid">
+          <article class="pillar">
+            <h3>Visão unificada</h3>
+            <p>Telemetria de rede, endpoint, nuvem, identidade e OT normalizada no Cibershield SIEMng.</p>
+          </article>
+          <article class="pillar">
+            <h3>Detecção com contexto</h3>
+            <p>Regras customizadas, mapeamento MITRE ATT&amp;CK e hunting orientado por inteligência de ameaças.</p>
+          </article>
+          <article class="pillar">
+            <h3>Resposta orquestrada</h3>
+            <p>Playbooks SOAR, Vulcan EDR/XDR e Vulcan Response para conter, investigar e recuperar.</p>
+          </article>
+          <article class="pillar">
+            <h3>Evidência contínua</h3>
+            <p>Dashboards executivos, KPIs, runbooks e relatórios que transformam operação em prova de conformidade.</p>
+          </article>
+        </div>
+        <div class="chips">
+          <span class="chip chip--core">Cibershield SIEMng</span>
+          <span class="chip chip--core">Vulcan EDR/XDR</span>
+          <span class="chip">Vulcan Agent · FIM e inventário</span>
+          <span class="chip">SOAR</span>
+          <span class="chip">MITRE ATT&amp;CK</span>
+          <span class="chip">NIST CSF 2.0</span>
+        </div>
+      </div>
+      <div class="console" aria-label="Painel ilustrativo da plataforma Cybershield">
+        <div class="console-head"><b>Cybershield · Visão operacional</b><span>● Live</span></div>
+        <div class="console-grid">
+          <div class="kpi"><strong>MTTD</strong><span>tempo médio de detecção</span></div>
+          <div class="kpi"><strong>MTTR</strong><span>tempo médio de resposta</span></div>
+          <div class="kpi"><strong>24x7</strong><span>cobertura de operação</span></div>
+          <div class="kpi"><strong>100%</strong><span>rastreabilidade de evidências</span></div>
+        </div>
+        <div class="flow">
+          <div class="flow-step"><b>01</b> Coletar telemetria de fontes heterogêneas</div>
+          <div class="flow-step"><b>02</b> Correlacionar e enriquecer com contexto de ameaça</div>
+          <div class="flow-step"><b>03</b> Priorizar por risco real e impacto de negócio</div>
+          <div class="flow-step"><b>04</b> Responder com playbooks e contenção coordenada</div>
+          <div class="flow-step"><b>05</b> Gerar evidência, KPIs e lições aprendidas</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-info">
+      <span>Cybershield · Cibershield SIEMng · Vulcan EDR/XDR · CyberShield OT</span>
+      <span>Página 02</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: STACKS E INTEGRAÇÕES -->
+  <div class="slide" id="stacks">
+    <div class="slide-header">
+      <div class="slide-header-left">
+        <p class="slide-eyebrow">Stacks &amp; Integrações</p>
+        <h2>Profundidade técnica onde ela importa</h2>
+      </div>
+      <div class="slide-header-actions">
+        <div class="slide-badge">Stacks em Destaque</div>
+        <img class="slide-header-logo" src="logovulcan.png" alt="Vulcan Defense">
+      </div>
+    </div>
+    <p class="section-lead">A <strong>Cybershield</strong> é o centro da operação; ao redor dela, combinamos stacks especializadas e padrões abertos. A lista abaixo resume as capacidades que sustentam cada frente de atuação — sem dependência de um único fornecedor.</p>
+    <div class="stack-grid">
+      <article class="stack-card">
+        <div class="stack-card-header"><span class="stack-index">01</span><h3>Detecção &amp; Correlação</h3></div>
+        <p>Coração da plataforma: coleta normalizada, regras próprias e caça proativa com contexto de ameaças.</p>
+        <div class="chips"><span class="chip chip--core">Cibershield SIEMng</span><span class="chip">Regras customizadas</span><span class="chip">MITRE ATT&amp;CK</span><span class="chip">Threat Hunting</span><span class="chip">SOAR</span></div>
+      </article>
+      <article class="stack-card">
+        <div class="stack-card-header"><span class="stack-index">02</span><h3>Endpoint &amp; Resposta</h3></div>
+        <p>Telemetria de ponta a ponta, contenção coordenada e preservação de evidências em incidentes críticos.</p>
+        <div class="chips"><span class="chip chip--core">Vulcan EDR/XDR</span><span class="chip">Vulcan Agent</span><span class="chip">FIM / logs / inventário</span><span class="chip">Vulcan Response</span><span class="chip">Playbooks</span></div>
+      </article>
+      <article class="stack-card">
+        <div class="stack-card-header"><span class="stack-index">03</span><h3>Exposure &amp; AppSec</h3></div>
+        <p>Priorização baseada em risco real e controles aplicados desde o requisito até a produção.</p>
+        <div class="chips"><span class="chip chip--core">Vulcan Exposure</span><span class="chip">EPSS / CVSS</span><span class="chip">SAST / DAST / SCA</span><span class="chip">Threat Modeling</span><span class="chip">OWASP ASVS</span></div>
+      </article>
+      <article class="stack-card">
+        <div class="stack-card-header"><span class="stack-index">04</span><h3>Cloud &amp; Identidade</h3></div>
+        <p>Postura multicloud, privilégio mínimo e segmentação alinhados a Zero Trust e CIS Benchmarks.</p>
+        <div class="chips"><span class="chip">AWS · Azure · GCP</span><span class="chip">IAM / PAM</span><span class="chip">MFA / ZTNA</span><span class="chip">CSPM / CWPP</span><span class="chip">CIS Benchmarks</span></div>
+      </article>
+      <article class="stack-card">
+        <div class="stack-card-header"><span class="stack-index">05</span><h3>OT / ICS</h3></div>
+        <p>Visibilidade passiva e defesa industrial sem comprometer disponibilidade ou segurança operacional.</p>
+        <div class="chips"><span class="chip chip--core">CyberShield OT</span><span class="chip">Modbus · DNP3 · IEC 104</span><span class="chip">Modelo Purdue</span><span class="chip">IEC 62443</span></div>
+      </article>
+      <article class="stack-card">
+        <div class="stack-card-header"><span class="stack-index">06</span><h3>Governança &amp; Evidência</h3></div>
+        <p>Requisitos regulatórios convertidos em controles auditáveis e relatórios executivos.</p>
+        <div class="chips"><span class="chip">ISO 27001</span><span class="chip">NIST CSF 2.0</span><span class="chip">PCI DSS 4.0</span><span class="chip">LGPD / GDPR</span><span class="chip">KPIs e dashboards</span></div>
+      </article>
+    </div>
+    <div class="footer-info">
+      <span>Stacks Vulcan · Cybershield como plataforma integrada</span>
+      <span>Página 03</span>
     </div>
   </div>
 
   <!-- SLIDE 2: MODELO OPERACIONAL -->
-  <div class="slide">
+  <div class="slide" id="operacao">
     <div class="slide-header">
       <div class="slide-header-left">
-        <h3>Visão Geral</h3>
-        <h1>Segurança como Capacidade Operacional</h1>
+        <p class="slide-eyebrow">Visão Geral</p>
+        <h2>Segurança como Capacidade Operacional</h2>
       </div>
       <div style="display: flex; align-items: center; gap: 16px;">
         <div class="slide-badge">Ciclo de Maturidade</div>
@@ -530,42 +801,42 @@
     </div>
     <div class="grid-3">
       <div class="card">
-        <h4>01. Prevenir</h4>
+        <h3>01. Prevenir</h3>
         <p style="font-size: 0.88rem; color: var(--text-muted);">Arquitetura, hardening, IAM, AppSec, DevSecOps e gestão proativa de vulnerabilidades.</p>
       </div>
       <div class="card">
-        <h4>02. Detectar</h4>
+        <h3>02. Detectar</h3>
         <p style="font-size: 0.88rem; color: var(--text-muted);">SIEM, EDR/XDR, correlação de eventos, Threat Intelligence, Detection Engineering e Threat Hunting.</p>
       </div>
       <div class="card">
-        <h4>03. Responder</h4>
+        <h3>03. Responder</h3>
         <p style="font-size: 0.88rem; color: var(--text-muted);">Incident Response, contenção imediata, investigação, forense digital, playbooks e recuperação.</p>
       </div>
       <div class="card">
-        <h4>04. Evidenciar</h4>
+        <h3>04. Evidenciar</h3>
         <p style="font-size: 0.88rem; color: var(--text-muted);">Dashboards executivos, KPIs, relatórios técnicos, trilhas de auditoria e evidências para compliance.</p>
       </div>
       <div class="card">
-        <h4>05. Melhorar</h4>
+        <h3>05. Melhorar</h3>
         <p style="font-size: 0.88rem; color: var(--text-muted);">Reteste, tuning de regras, lições aprendidas (lessons learned), roadmap de maturidade e evolução contínua.</p>
       </div>
       <div class="card">
-        <h4>06. Capacitar</h4>
+        <h3>06. Capacitar</h3>
         <p style="font-size: 0.88rem; color: var(--text-muted);">Formação de Security Champions, treinamentos práticos, laboratórios e transferência de conhecimento.</p>
       </div>
     </div>
     <div class="footer-info">
       <span>A Vulcan atua como extensão técnica do cliente integrando pessoas, processos e tecnologia.</span>
-      <span>Página 02</span>
+      <span>Página 04</span>
     </div>
   </div>
 
   <!-- SLIDE 3: CYBER DEFENSE (SOC/SIEM/MDR) -->
-  <div class="slide">
+  <div class="slide" id="cyber-defense">
     <div class="slide-header">
       <div class="slide-header-left">
-        <h3>Escopo Detalhado</h3>
-        <h1>SOC, SIEM e MDR/XDR (Cyber Defense Operations)</h1>
+        <p class="slide-eyebrow">Escopo Detalhado</p>
+        <h2>SOC, SIEM e MDR/XDR (Cyber Defense Operations)</h2>
       </div>
       <div style="display: flex; align-items: center; gap: 16px;">
         <div class="slide-badge">Operações 24x7</div>
@@ -574,37 +845,37 @@
     </div>
     <div class="grid-2">
       <div class="card">
-        <h4>Objetivo & Atividades Técnicas</h4>
+        <h3>Objetivo & Atividades Técnicas</h3>
         <ul>
-          <li><strong>Objetivo:</strong> Centralizar telemetria, detectar comportamentos anômalos, reduzir tempo de investigação e coordenar resposta[cite: 1, 2].</li>
-          <li>Onboarding e normalização de fontes de logs heterogêneas[cite: 1, 2].</li>
-          <li>Criação de regras de correlação customizadas e tuning contínuo[cite: 1, 2].</li>
-          <li>Detection Engineering e mapeamento de TTPs no MITRE ATT&CK[cite: 1, 2].</li>
-          <li>Threat Hunting proativo e execução de playbooks SOAR[cite: 1, 2].</li>
+          <li><strong>Objetivo:</strong> Centralizar telemetria, detectar comportamentos anômalos, reduzir tempo de investigação e coordenar resposta.</li>
+          <li>Onboarding e normalização de fontes de logs heterogêneas.</li>
+          <li>Criação de regras de correlação customizadas e tuning contínuo.</li>
+          <li>Detection Engineering e mapeamento de TTPs no MITRE ATT&CK.</li>
+          <li>Threat Hunting proativo e execução de playbooks SOAR.</li>
         </ul>
       </div>
       <div class="card">
-        <h4>Entregáveis, Métricas & Frameworks</h4>
+        <h3>Entregáveis, Métricas & Frameworks</h3>
         <ul>
-          <li><strong>Entregáveis:</strong> Matriz de fontes, catálogo de casos de uso, dashboards/KPIs, runbooks e relatórios de incidentes[cite: 1, 2].</li>
+          <li><strong>Entregáveis:</strong> Matriz de fontes, catálogo de casos de uso, dashboards/KPIs, runbooks e relatórios de incidentes.</li>
           <li><strong>Tecnologias:</strong> SIEM (Cibershield SIEMng), EDR/XDR (Vulcan EDR/XDR, SOAR)</li>
-          <li><strong>Indicadores (KPIs):</strong> MTTD (Detecção), MTTR (Resposta), cobertura de fontes, taxa de falsos positivos, SLA de triagem[cite: 1, 2].</li>
-          <li><strong>Referenciais:</strong> NIST CSF, MITRE ATT&CK, ISO 27001/27002[cite: 1, 2].</li>
+          <li><strong>Indicadores (KPIs):</strong> MTTD (Detecção), MTTR (Resposta), cobertura de fontes, taxa de falsos positivos, SLA de triagem.</li>
+          <li><strong>Referenciais:</strong> NIST CSF, MITRE ATT&CK, ISO 27001/27002.</li>
         </ul>
       </div>
     </div>
     <div class="footer-info">
       <span>Vulcan Defense - Cyber Defense Operations</span>
-      <span>Página 03</span>
+      <span>Página 05</span>
     </div>
   </div>
 
   <!-- SLIDE 4: VULCAN EXPOSURE -->
-  <div class="slide">
+  <div class="slide" id="exposure">
     <div class="slide-header">
       <div class="slide-header-left">
-        <h3>Escopo Detalhado</h3>
-        <h1>Gestão de Vulnerabilidades e Exposure (Vulcan Exposure)</h1>
+        <p class="slide-eyebrow">Escopo Detalhado</p>
+        <h2>Gestão de Vulnerabilidades e Exposure (Vulcan Exposure)</h2>
       </div>
       <div style="display: flex; align-items: center; gap: 16px;">
         <div class="slide-badge">EASM / CTEM</div>
@@ -613,37 +884,37 @@
     </div>
     <div class="grid-2">
       <div class="card">
-        <h4>Objetivo & Atividades Técnicas</h4>
+        <h3>Objetivo & Atividades Técnicas</h3>
         <ul>
-          <li><strong>Objetivo:</strong> Transformar achados técnicos em uma fila de risco priorizada e acompanhada até a remediação efetiva[cite: 1, 2].</li>
-          <li>Inventário dinâmico e contínuo de ativos internos e expostos à internet[cite: 1, 2].</li>
-          <li>Scans autenticados/não-autenticados e monitoramento de superfície de ataque[cite: 1, 2].</li>
-          <li>Priorização baseada em risco real, contexto de negócio e inteligência de ameaças (EPSS/CVSS)[cite: 1, 2].</li>
-          <li>Validação manual de falhas críticas e gestão de exceções com SLA[cite: 1, 2].</li>
+          <li><strong>Objetivo:</strong> Transformar achados técnicos em uma fila de risco priorizada e acompanhada até a remediação efetiva.</li>
+          <li>Inventário dinâmico e contínuo de ativos internos e expostos à internet.</li>
+          <li>Scans autenticados/não-autenticados e monitoramento de superfície de ataque.</li>
+          <li>Priorização baseada em risco real, contexto de negócio e inteligência de ameaças (EPSS/CVSS).</li>
+          <li>Validação manual de falhas críticas e gestão de exceções com SLA.</li>
         </ul>
       </div>
       <div class="card">
-        <h4>Entregáveis, Métricas & Frameworks</h4>
+        <h3>Entregáveis, Métricas & Frameworks</h3>
         <ul>
-          <li><strong>Entregáveis:</strong> Inventário de ativos, backlog priorizado, plano de tratamento, relatório de tendência e evidência de reteste[cite: 1, 2].</li>
-          <li><strong>Tecnologias:</strong> Tenable, Qualys, Rapid7, scanners SCA, ticketing (Jira/ServiceNow)[cite: 1, 2].</li>
-          <li><strong>Indicadores (KPIs):</strong> Aging de falhas, MTTR de vulnerabilidades, % de cobertura, críticas vencidas, reincidência[cite: 1, 2].</li>
-          <li><strong>Referenciais:</strong> Gartner CTEM, NIST CSF, ISO 27001, CIS Controls, PCI DSS[cite: 1, 2].</li>
+          <li><strong>Entregáveis:</strong> Inventário de ativos, backlog priorizado, plano de tratamento, relatório de tendência e evidência de reteste.</li>
+          <li><strong>Tecnologias:</strong> Tenable, Qualys, Rapid7, scanners SCA, ticketing (Jira/ServiceNow).</li>
+          <li><strong>Indicadores (KPIs):</strong> Aging de falhas, MTTR de vulnerabilidades, % de cobertura, críticas vencidas, reincidência.</li>
+          <li><strong>Referenciais:</strong> Gartner CTEM, NIST CSF, ISO 27001, CIS Controls, PCI DSS.</li>
         </ul>
       </div>
     </div>
     <div class="footer-info">
       <span>Vulcan Defense - Exposure Management</span>
-      <span>Página 04</span>
+      <span>Página 06</span>
     </div>
   </div>
 
   <!-- SLIDE 5: PENTEST & OFFENSIVE SECURITY -->
-  <div class="slide">
+  <div class="slide" id="pentest">
     <div class="slide-header">
       <div class="slide-header-left">
-        <h3>Escopo Detalhado</h3>
-        <h1>Pentest e Offensive Security (Red Team)</h1>
+        <p class="slide-eyebrow">Escopo Detalhado</p>
+        <h2>Pentest e Offensive Security (Red Team)</h2>
       </div>
       <div style="display: flex; align-items: center; gap: 16px;">
         <div class="slide-badge">Validação Técnica</div>
@@ -652,37 +923,37 @@
     </div>
     <div class="grid-2">
       <div class="card">
-        <h4>Objetivo & Atividades Técnicas</h4>
+        <h3>Objetivo & Atividades Técnicas</h3>
         <ul>
-          <li><strong>Objetivo:</strong> Identificar falhas exploráveis de forma autorizada e produzir evidências acionáveis para correção[cite: 1, 2].</li>
-          <li>Testes de Invasão (Black-box, Grey-box, White-box) em Web, APIs e Redes[cite: 1, 2].</li>
-          <li>Exercícios de Red Teaming e simulação de adversários motivados[cite: 1, 2].</li>
-          <li>Engenharia social direcionada (Spear Phishing, Vishing, Smishing)[cite: 1, 2].</li>
-          <li>Análise de autenticação, autorização, lógica de negócio e cenários de abuso[cite: 1, 2].</li>
+          <li><strong>Objetivo:</strong> Identificar falhas exploráveis de forma autorizada e produzir evidências acionáveis para correção.</li>
+          <li>Testes de Invasão (Black-box, Grey-box, White-box) em Web, APIs e Redes.</li>
+          <li>Exercícios de Red Teaming e simulação de adversários motivados.</li>
+          <li>Engenharia social direcionada (Spear Phishing, Vishing, Smishing).</li>
+          <li>Análise de autenticação, autorização, lógica de negócio e cenários de abuso.</li>
         </ul>
       </div>
       <div class="card">
-        <h4>Entregáveis, Métricas & Frameworks</h4>
+        <h3>Entregáveis, Métricas & Frameworks</h3>
         <ul>
-          <li><strong>Entregáveis:</strong> Relatório executivo de risco, relatório técnico com PoCs seguras, severidade CVSS e termo de Security Acceptance[cite: 1, 2].</li>
-          <li><strong>Ferramentas:</strong> Cobalt Strike, Burp Suite Pro, Metasploit, Silver, GoPhish[cite: 1, 2].</li>
-          <li><strong>Indicadores (KPIs):</strong> Falhas críticas/altas encontradas, taxa de correção, tempo médio de remediação, taxa de sucesso Red Team[cite: 1, 2].</li>
-          <li><strong>Referenciais:</strong> OWASP WSTG, OWASP API Top 10, PTES, NIST SP 800-115, PCI DSS[cite: 1, 2].</li>
+          <li><strong>Entregáveis:</strong> Relatório executivo de risco, relatório técnico com PoCs seguras, severidade CVSS e termo de Security Acceptance.</li>
+          <li><strong>Ferramentas:</strong> Cobalt Strike, Burp Suite Pro, Metasploit, Silver, GoPhish.</li>
+          <li><strong>Indicadores (KPIs):</strong> Falhas críticas/altas encontradas, taxa de correção, tempo médio de remediação, taxa de sucesso Red Team.</li>
+          <li><strong>Referenciais:</strong> OWASP WSTG, OWASP API Top 10, PTES, NIST SP 800-115, PCI DSS.</li>
         </ul>
       </div>
     </div>
     <div class="footer-info">
       <span>Vulcan Defense - Offensive Security</span>
-      <span>Página 05</span>
+      <span>Página 07</span>
     </div>
   </div>
 
   <!-- SLIDE 6: APPSEC -->
-  <div class="slide">
+  <div class="slide" id="appsec">
     <div class="slide-header">
       <div class="slide-header-left">
-        <h3>Escopo Detalhado</h3>
-        <h1>AppSec (Segurança no Ciclo de Desenvolvimento)</h1>
+        <p class="slide-eyebrow">Escopo Detalhado</p>
+        <h2>AppSec (Segurança no Ciclo de Desenvolvimento)</h2>
       </div>
       <div style="display: flex; align-items: center; gap: 16px;">
         <div class="slide-badge">Software Security</div>
@@ -691,37 +962,37 @@
     </div>
     <div class="grid-2">
       <div class="card">
-        <h4>Objetivo & Atividades Técnicas</h4>
+        <h3>Objetivo & Atividades Técnicas</h3>
         <ul>
-          <li><strong>Objetivo:</strong> Reduzir vulnerabilidades desde a fase de requisitos e arquitetura até build, teste e produção[cite: 1, 2].</li>
-          <li>Threat Modeling (Modelagem de Ameaças) durante o design de software[cite: 1, 2].</li>
-          <li>Revisão de arquitetura e análise estática (SAST) / dinâmica (DAST)[cite: 1, 2].</li>
-          <li>Análise de composição de software (SCA) e detecção de segredos expostos[cite: 1, 2].</li>
-          <li>Segurança de APIs (REST/GraphQL) e guias de Secure Coding[cite: 1, 2].</li>
+          <li><strong>Objetivo:</strong> Reduzir vulnerabilidades desde a fase de requisitos e arquitetura até build, teste e produção.</li>
+          <li>Threat Modeling (Modelagem de Ameaças) durante o design de software.</li>
+          <li>Revisão de arquitetura e análise estática (SAST) / dinâmica (DAST).</li>
+          <li>Análise de composição de software (SCA) e detecção de segredos expostos.</li>
+          <li>Segurança de APIs (REST/GraphQL) e guias de Secure Coding.</li>
         </ul>
       </div>
       <div class="card">
-        <h4>Entregáveis, Métricas & Frameworks</h4>
+        <h3>Entregáveis, Métricas & Frameworks</h3>
         <ul>
-          <li><strong>Entregáveis:</strong> Matriz de Threat Model, baseline de AppSec, relatórios de scans, padrões de código seguro e plano de remediação[cite: 1, 2].</li>
-          <li><strong>Tecnologias:</strong> Checkmarx, SonarQube, Snyk, Veracode, Fortify, GitGuardian[cite: 1, 2].</li>
-          <li><strong>Indicadores (KPIs):</strong> Density de findings por KLOC, cobertura de código analisado, MTTR de falhas em código[cite: 1, 2].</li>
-          <li><strong>Referenciais:</strong> OWASP ASVS, OWASP SAMM, OWASP Top 10, NIST SSDF[cite: 1, 2].</li>
+          <li><strong>Entregáveis:</strong> Matriz de Threat Model, baseline de AppSec, relatórios de scans, padrões de código seguro e plano de remediação.</li>
+          <li><strong>Tecnologias:</strong> Checkmarx, SonarQube, Snyk, Veracode, Fortify, GitGuardian.</li>
+          <li><strong>Indicadores (KPIs):</strong> Density de findings por KLOC, cobertura de código analisado, MTTR de falhas em código.</li>
+          <li><strong>Referenciais:</strong> OWASP ASVS, OWASP SAMM, OWASP Top 10, NIST SSDF.</li>
         </ul>
       </div>
     </div>
     <div class="footer-info">
       <span>Vulcan Defense - Application Security</span>
-      <span>Página 06</span>
+      <span>Página 08</span>
     </div>
   </div>
 
   <!-- SLIDE 7: DEVSECOPS -->
-  <div class="slide">
+  <div class="slide" id="devsecops">
     <div class="slide-header">
       <div class="slide-header-left">
-        <h3>Escopo Detalhado</h3>
-        <h1>DevSecOps (Security as Code)</h1>
+        <p class="slide-eyebrow">Escopo Detalhado</p>
+        <h2>DevSecOps (Security as Code)</h2>
       </div>
       <div style="display: flex; align-items: center; gap: 16px;">
         <div class="slide-badge">Automação & CI/CD</div>
@@ -730,37 +1001,37 @@
     </div>
     <div class="grid-2">
       <div class="card">
-        <h4>Objetivo & Atividades Técnicas</h4>
+        <h3>Objetivo & Atividades Técnicas</h3>
         <ul>
-          <li><strong>Objetivo:</strong> Incorporar controles automatizados ao fluxo de entrega (CI/CD) sem impactar a velocidade da engenharia[cite: 1, 2].</li>
-          <li>Configuração de Security Gates e políticas automatizadas por severidade[cite: 1, 2].</li>
-          <li>Scan de código, dependências, imagens de contêineres e IaC (Terraform/Ansible)[cite: 1, 2].</li>
-          <li>Proteção da supply chain de software e assinaturas de artefatos[cite: 1, 2].</li>
-          <li>Automação de coleta de evidências de conformidade para auditorias[cite: 1, 2].</li>
+          <li><strong>Objetivo:</strong> Incorporar controles automatizados ao fluxo de entrega (CI/CD) sem impactar a velocidade da engenharia.</li>
+          <li>Configuração de Security Gates e políticas automatizadas por severidade.</li>
+          <li>Scan de código, dependências, imagens de contêineres e IaC (Terraform/Ansible).</li>
+          <li>Proteção da supply chain de software e assinaturas de artefatos.</li>
+          <li>Automação de coleta de evidências de conformidade para auditorias.</li>
         </ul>
       </div>
       <div class="card">
-        <h4>Entregáveis, Métricas & Frameworks</h4>
+        <h3>Entregáveis, Métricas & Frameworks</h3>
         <ul>
-          <li><strong>Entregáveis:</strong> Pipelines CI/CD com segurança ativa, documentação de gates, templates seguros, dashboards e runbooks[cite: 1, 2].</li>
-          <li><strong>Tecnologias:</strong> GitHub Actions, GitLab CI, Azure DevOps, Trivy, Checkov, Tfsec[cite: 1, 2].</li>
-          <li><strong>Indicadores (KPIs):</strong> % de pipelines protegidas, taxa de falhas em Quality Gates, tempo adicional no build[cite: 1, 2].</li>
-          <li><strong>Referenciais:</strong> NIST SSDF, OWASP SAMM, SLSA, CIS Benchmarks[cite: 1, 2].</li>
+          <li><strong>Entregáveis:</strong> Pipelines CI/CD com segurança ativa, documentação de gates, templates seguros, dashboards e runbooks.</li>
+          <li><strong>Tecnologias:</strong> GitHub Actions, GitLab CI, Azure DevOps, Trivy, Checkov, Tfsec.</li>
+          <li><strong>Indicadores (KPIs):</strong> % de pipelines protegidas, taxa de falhas em Quality Gates, tempo adicional no build.</li>
+          <li><strong>Referenciais:</strong> NIST SSDF, OWASP SAMM, SLSA, CIS Benchmarks.</li>
         </ul>
       </div>
     </div>
     <div class="footer-info">
       <span>Vulcan Defense - DevSecOps</span>
-      <span>Página 07</span>
+      <span>Página 09</span>
     </div>
   </div>
 
   <!-- SLIDE 8: CLOUD, IAM, ENDPOINT E REDES -->
-  <div class="slide">
+  <div class="slide" id="infra">
     <div class="slide-header">
       <div class="slide-header-left">
-        <h3>Escopo Detalhado</h3>
-        <h1>Cloud, IAM, Endpoint e Redes (Controles de Infraestrutura)</h1>
+        <p class="slide-eyebrow">Escopo Detalhado</p>
+        <h2>Cloud, IAM, Endpoint e Redes (Controles de Infraestrutura)</h2>
       </div>
       <div style="display: flex; align-items: center; gap: 16px;">
         <div class="slide-badge">Zero Trust Architecture</div>
@@ -769,37 +1040,37 @@
     </div>
     <div class="grid-2">
       <div class="card">
-        <h4>Objetivo & Atividades Técnicas</h4>
+        <h3>Objetivo & Atividades Técnicas</h3>
         <ul>
-          <li><strong>Objetivo:</strong> Reduzir exposição e privilégios excessivos em ambientes multicloud, identidades e redes[cite: 1, 2].</li>
-          <li>Avaliação de postura de segurança cloud (CSPM) e cargas de trabalho (CWPP)[cite: 1, 2].</li>
-          <li>Gestão de identidades e acessos privilegiados (IAM/PAM), MFA e Least Privilege[cite: 1, 2].</li>
-          <li>Hardening de sistemas operacionais, contêineres e dispositivos finais[cite: 1, 2].</li>
-          <li>Microssegmentação de rede e implementação de arquitetura Zero Trust (ZTNA)[cite: 1, 2].</li>
+          <li><strong>Objetivo:</strong> Reduzir exposição e privilégios excessivos em ambientes multicloud, identidades e redes.</li>
+          <li>Avaliação de postura de segurança cloud (CSPM) e cargas de trabalho (CWPP).</li>
+          <li>Gestão de identidades e acessos privilegiados (IAM/PAM), MFA e Least Privilege.</li>
+          <li>Hardening de sistemas operacionais, contêineres e dispositivos finais.</li>
+          <li>Microssegmentação de rede e implementação de arquitetura Zero Trust (ZTNA).</li>
         </ul>
       </div>
       <div class="card">
-        <h4>Entregáveis, Métricas & Frameworks</h4>
+        <h3>Entregáveis, Métricas & Frameworks</h3>
         <ul>
-          <li><strong>Entregáveis:</strong> Relatório de postura cloud, plano IAM/PAM, baselines de hardening, mapa de segmentação e fontes de logs[cite: 1, 2].</li>
-          <li><strong>Tecnologias:</strong> AWS, Azure, GCP, Okta, CyberArk, Microsoft Entra, Prisma Cloud, Wiz, Fortinet, Palo Alto[cite: 1, 2].</li>
-          <li><strong>Indicadores (KPIs):</strong> % contas com Least Privilege, cobertura de EDR, aderência aos baselines CIS, exposição pública[cite: 1, 2].</li>
-          <li><strong>Referenciais:</strong> CIS Benchmarks, CSA CCM, NIST SP 800-207 (Zero Trust), ISO 27001[cite: 1, 2].</li>
+          <li><strong>Entregáveis:</strong> Relatório de postura cloud, plano IAM/PAM, baselines de hardening, mapa de segmentação e fontes de logs.</li>
+          <li><strong>Tecnologias:</strong> AWS, Azure, GCP, Okta, CyberArk, Microsoft Entra, Prisma Cloud, Wiz, Fortinet, Palo Alto.</li>
+          <li><strong>Indicadores (KPIs):</strong> % contas com Least Privilege, cobertura de EDR, aderência aos baselines CIS, exposição pública.</li>
+          <li><strong>Referenciais:</strong> CIS Benchmarks, CSA CCM, NIST SP 800-207 (Zero Trust), ISO 27001.</li>
         </ul>
       </div>
     </div>
     <div class="footer-info">
       <span>Vulcan Defense - Infrastructure Security</span>
-      <span>Página 08</span>
+      <span>Página 10</span>
     </div>
   </div>
 
   <!-- SLIDE 9: OT / ICS E CYBERSHIELD OT -->
-  <div class="slide">
+  <div class="slide" id="ot">
     <div class="slide-header">
       <div class="slide-header-left">
-        <h3>Escopo Detalhado</h3>
-        <h1>OT / ICS e CyberShield OT (Defesa Industrial)</h1>
+        <p class="slide-eyebrow">Escopo Detalhado</p>
+        <h2>OT / ICS e CyberShield OT (Defesa Industrial)</h2>
       </div>
       <div style="display: flex; align-items: center; gap: 16px;">
         <div class="slide-badge">Automação & SCADA</div>
@@ -808,37 +1079,37 @@
     </div>
     <div class="grid-2">
       <div class="card">
-        <h4>Objetivo & Atividades Técnicas</h4>
+        <h3>Objetivo & Atividades Técnicas</h3>
         <ul>
-          <li><strong>Objetivo:</strong> Proteger ativos industriais e integrações TI/OT preservando a disponibilidade e segurança operacional[cite: 1, 2].</li>
-          <li>Inventário passivo de ativos de rede OT (PLCs, RTUs, IHMs, SCADA)[cite: 1, 2].</li>
-          <li>Segmentação e alinhamento da rede industrial ao Modelo Purdue[cite: 1, 2].</li>
-          <li>Monitoramento de protocolos industriais (Modbus, Profinet, DNP3, IEC 104)[cite: 1, 2].</li>
-          <li>Resposta a incidentes adaptada ao contexto industrial (OT-aware)[cite: 1, 2].</li>
+          <li><strong>Objetivo:</strong> Proteger ativos industriais e integrações TI/OT preservando a disponibilidade e segurança operacional.</li>
+          <li>Inventário passivo de ativos de rede OT (PLCs, RTUs, IHMs, SCADA).</li>
+          <li>Segmentação e alinhamento da rede industrial ao Modelo Purdue.</li>
+          <li>Monitoramento de protocolos industriais (Modbus, Profinet, DNP3, IEC 104).</li>
+          <li>Resposta a incidentes adaptada ao contexto industrial (OT-aware).</li>
         </ul>
       </div>
       <div class="card">
-        <h4>Entregáveis, Métricas & Frameworks</h4>
+        <h3>Entregáveis, Métricas & Frameworks</h3>
         <ul>
-          <li><strong>Entregáveis:</strong> Inventário de ativos OT, diagrama de segmentação, matriz de risco cyber-físico, casos de uso SIEM OT e playbooks[cite: 1, 2].</li>
-          <li><strong>Tecnologias:</strong> CyberShield OT / Vulcan-SIEM OT, Nozomi Networks, Claroty, Dragos, FortiGate Rugged[cite: 1, 2].</li>
-          <li><strong>Indicadores (KPIs):</strong> Cobertura de ativos catalogados, downtime operacional (alvo = 0), conformidade IEC 62443[cite: 1, 2].</li>
-          <li><strong>Referenciais:</strong> ISA/IEC 62443, NIST SP 800-82, MITRE ATT&CK for ICS[cite: 1, 2].</li>
+          <li><strong>Entregáveis:</strong> Inventário de ativos OT, diagrama de segmentação, matriz de risco cyber-físico, casos de uso SIEM OT e playbooks.</li>
+          <li><strong>Tecnologias:</strong> CyberShield OT / Vulcan-SIEM OT, Nozomi Networks, Claroty, Dragos, FortiGate Rugged.</li>
+          <li><strong>Indicadores (KPIs):</strong> Cobertura de ativos catalogados, downtime operacional (alvo = 0), conformidade IEC 62443.</li>
+          <li><strong>Referenciais:</strong> ISA/IEC 62443, NIST SP 800-82, MITRE ATT&CK for ICS.</li>
         </ul>
       </div>
     </div>
     <div class="footer-info">
       <span>Vulcan Defense - OT/ICS Security</span>
-      <span>Página 09</span>
+      <span>Página 11</span>
     </div>
   </div>
 
   <!-- SLIDE 10: INCIDENT RESPONSE & FORENSE -->
-  <div class="slide">
+  <div class="slide" id="response">
     <div class="slide-header">
       <div class="slide-header-left">
-        <h3>Escopo Detalhado</h3>
-        <h1>Incident Response & Forense (Vulcan Response)</h1>
+        <p class="slide-eyebrow">Escopo Detalhado</p>
+        <h2>Incident Response & Forense (Vulcan Response)</h2>
       </div>
       <div style="display: flex; align-items: center; gap: 16px;">
         <div class="slide-badge">Resposta a Crises</div>
@@ -847,37 +1118,37 @@
     </div>
     <div class="grid-2">
       <div class="card">
-        <h4>Objetivo & Atividades Técnicas</h4>
+        <h3>Objetivo & Atividades Técnicas</h3>
         <ul>
-          <li><strong>Objetivo:</strong> Conter incidentes graves, preservar evidências digitais, determinar causa raiz e restaurar a operação[cite: 1, 2].</li>
-          <li>Atendimento emergencial 24x7 para contenção de Ransomware e ataques avançados[cite: 1, 2].</li>
-          <li>Coleta e preservação de evidências com rigorosa cadeia de custódia[cite: 1, 2].</li>
-          <li>Análise forense em memória, disco, artefatos e engenharia reversa de malware[cite: 1, 2].</li>
-          <li>Análise de causa raiz (Root Cause Analysis - RCA) e plano pós-incidente[cite: 1, 2].</li>
+          <li><strong>Objetivo:</strong> Conter incidentes graves, preservar evidências digitais, determinar causa raiz e restaurar a operação.</li>
+          <li>Atendimento emergencial 24x7 para contenção de Ransomware e ataques avançados.</li>
+          <li>Coleta e preservação de evidências com rigorosa cadeia de custódia.</li>
+          <li>Análise forense em memória, disco, artefatos e engenharia reversa de malware.</li>
+          <li>Análise de causa raiz (Root Cause Analysis - RCA) e plano pós-incidente.</li>
         </ul>
       </div>
       <div class="card">
-        <h4>Entregáveis, Métricas & Frameworks</h4>
+        <h3>Entregáveis, Métricas & Frameworks</h3>
         <ul>
-          <li><strong>Entregáveis:</strong> Relatório de investigação forense/RCA, linha do tempo detalhada, extração de IoCs/YARA e cadeia de custódia[cite: 1, 2].</li>
-          <li><strong>Ferramentas:</strong> FTK Imager, Volatility, KAPE, Velociraptor, Ghidra, EnCase[cite: 1, 2].</li>
-          <li><strong>Indicadores (KPIs):</strong> MTTC (Tempo de Contenção), MTTE (Erradicação), integridade de evidências (100%)[cite: 1, 2].</li>
-          <li><strong>Referenciais:</strong> NIST SP 800-61, ISO/IEC 27037, ISO 27035, FIRST[cite: 1, 2].</li>
+          <li><strong>Entregáveis:</strong> Relatório de investigação forense/RCA, linha do tempo detalhada, extração de IoCs/YARA e cadeia de custódia.</li>
+          <li><strong>Ferramentas:</strong> FTK Imager, Volatility, KAPE, Velociraptor, Ghidra, EnCase.</li>
+          <li><strong>Indicadores (KPIs):</strong> MTTC (Tempo de Contenção), MTTE (Erradicação), integridade de evidências (100%).</li>
+          <li><strong>Referenciais:</strong> NIST SP 800-61, ISO/IEC 27037, ISO 27035, FIRST.</li>
         </ul>
       </div>
     </div>
     <div class="footer-info">
       <span>Vulcan Defense - Incident Response</span>
-      <span>Página 10</span>
+      <span>Página 12</span>
     </div>
   </div>
 
   <!-- SLIDE 11: GRC, COMPLIANCE E PRIVACIDADE -->
-  <div class="slide">
+  <div class="slide" id="grc">
     <div class="slide-header">
       <div class="slide-header-left">
-        <h3>Escopo Detalhado</h3>
-        <h1>GRC, Compliance e Privacidade (Governança por Evidência)</h1>
+        <p class="slide-eyebrow">Escopo Detalhado</p>
+        <h2>GRC, Compliance e Privacidade (Governança por Evidência)</h2>
       </div>
       <div style="display: flex; align-items: center; gap: 16px;">
         <div class="slide-badge">Conformidade & Risco</div>
@@ -886,37 +1157,37 @@
     </div>
     <div class="grid-2">
       <div class="card">
-        <h4>Objetivo & Atividades Técnicas</h4>
+        <h3>Objetivo & Atividades Técnicas</h3>
         <ul>
-          <li><strong>Objetivo:</strong> Converter requisitos regulatórios e contratuais em controles implementáveis e auditáveis[cite: 1, 2].</li>
-          <li>Gap Analysis e diagnósticos de maturidade (ISO 27001, PCI DSS, LGPD)[cite: 1, 2].</li>
-          <li>Elaboração e revisão de Políticas de Segurança da Informação (PSI)[cite: 1, 2].</li>
-          <li>Gestão de riscos de segurança em terceiros (TPRM)[cite: 1, 2].</li>
-          <li>Data Mapping, ROPA e elaboração de Relatórios de Impacto (DPIA/RIPD)[cite: 1, 2].</li>
+          <li><strong>Objetivo:</strong> Converter requisitos regulatórios e contratuais em controles implementáveis e auditáveis.</li>
+          <li>Gap Analysis e diagnósticos de maturidade (ISO 27001, PCI DSS, LGPD).</li>
+          <li>Elaboração e revisão de Políticas de Segurança da Informação (PSI).</li>
+          <li>Gestão de riscos de segurança em terceiros (TPRM).</li>
+          <li>Data Mapping, ROPA e elaboração de Relatórios de Impacto (DPIA/RIPD).</li>
         </ul>
       </div>
       <div class="card">
-        <h4>Entregáveis, Métricas & Frameworks</h4>
+        <h3>Entregáveis, Métricas & Frameworks</h3>
         <ul>
-          <li><strong>Entregáveis:</strong> Relatório de maturidade/gaps, Risk Register, pacote de evidências para auditoria, políticas e políticas LGPD[cite: 1, 2].</li>
-          <li><strong>Tecnologias:</strong> OneTrust, ServiceNow GRC, Varonis, Microsoft Purview[cite: 1, 2].</li>
-          <li><strong>Indicadores (KPIs):</strong> % controles atendidos, riscos críticos mitigados, tempo de resposta a requisições de titulares (DSR)[cite: 1, 2].</li>
-          <li><strong>Referenciais:</strong> ISO/IEC 27001:2022, NIST CSF 2.0, PCI DSS v4.0, SOC 2, LGPD/GDPR[cite: 1, 2].</li>
+          <li><strong>Entregáveis:</strong> Relatório de maturidade/gaps, Risk Register, pacote de evidências para auditoria, políticas e políticas LGPD.</li>
+          <li><strong>Tecnologias:</strong> OneTrust, ServiceNow GRC, Varonis, Microsoft Purview.</li>
+          <li><strong>Indicadores (KPIs):</strong> % controles atendidos, riscos críticos mitigados, tempo de resposta a requisições de titulares (DSR).</li>
+          <li><strong>Referenciais:</strong> ISO/IEC 27001:2022, NIST CSF 2.0, PCI DSS v4.0, SOC 2, LGPD/GDPR.</li>
         </ul>
       </div>
     </div>
     <div class="footer-info">
       <span>Vulcan Defense - Governance, Risk & Compliance</span>
-      <span>Página 11</span>
+      <span>Página 13</span>
     </div>
   </div>
 
   <!-- SLIDE 12: AMBIENTES CRÍTICOS E SETORES ESTRATÉGICOS -->
-  <div class="slide">
+  <div class="slide" id="setores">
     <div class="slide-header">
       <div class="slide-header-left">
-        <h3>Setores de Atuação</h3>
-        <h1>Ambientes Críticos e Estratégicos</h1>
+        <p class="slide-eyebrow">Setores de Atuação</p>
+        <h2>Ambientes Críticos e Estratégicos</h2>
       </div>
       <div style="display: flex; align-items: center; gap: 16px;">
         <div class="slide-badge">Alta Resiliência</div>
@@ -925,42 +1196,42 @@
     </div>
     <div class="grid-3">
       <div class="card">
-        <h4>Defesa & Militares</h4>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">Segmentação por criticidade, IAM/PAM, hardening, SOC/SIEM, EDR/XDR, hunting, forense e proteção de supply chain[cite: 1, 2].</p>
+        <h3>Defesa & Militares</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Segmentação por criticidade, IAM/PAM, hardening, SOC/SIEM, EDR/XDR, hunting, forense e proteção de supply chain.</p>
       </div>
       <div class="card">
-        <h4>Segredos Industriais / P&D</h4>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">Classificação de dados, Least Privilege, DLP, criptografia, auditoria rigorosa de código/Git e gestão de acessos a IP[cite: 1, 2].</p>
+        <h3>Segredos Industriais / P&D</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Classificação de dados, Least Privilege, DLP, criptografia, auditoria rigorosa de código/Git e gestão de acessos a IP.</p>
       </div>
       <div class="card">
-        <h4>Energia & Utilities</h4>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">Segurança TI/OT, SCADA/PLC, segmentação rígida, telemetria industrial, acesso remoto seguro e conformidade NERC CIP[cite: 1, 2].</p>
+        <h3>Energia & Utilities</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Segurança TI/OT, SCADA/PLC, segmentação rígida, telemetria industrial, acesso remoto seguro e conformidade NERC CIP.</p>
       </div>
       <div class="card">
-        <h4>Logística & CDs</h4>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">Proteção de WMS/TMS/ERP, segurança em APIs/EDI, proteção de endpoints em centros de distribuição e continuidade operacional[cite: 1, 2].</p>
+        <h3>Logística & CDs</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Proteção de WMS/TMS/ERP, segurança em APIs/EDI, proteção de endpoints em centros de distribuição e continuidade operacional.</p>
       </div>
       <div class="card">
-        <h4>Infraestrutura Crítica</h4>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">Defesa em profundidade, planos de continuidade (PCN/DRP), isolamento Air-Gap e simulações de crises cibernéticas[cite: 1, 2].</p>
+        <h3>Infraestrutura Crítica</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Defesa em profundidade, planos de continuidade (PCN/DRP), isolamento Air-Gap e simulações de crises cibernéticas.</p>
       </div>
       <div class="card">
-        <h4>Plataformas Vulcan</h4>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">Plataforma proprietária integrando Vulcan Agent (FIM, logs, inventário), Vulcan-SIEM, Vulcan Exposure e Vulcan Response[cite: 1, 2].</p>
+        <h3>Plataformas Vulcan</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Cybershield: plataforma integrada com Vulcan Agent (FIM, logs e inventário), Cibershield SIEMng, Vulcan EDR/XDR, Vulcan Exposure, Vulcan Response e CyberShield OT.</p>
       </div>
     </div>
     <div class="footer-info">
       <span>Vulcan Defense - Specialized Solutions</span>
-      <span>Página 12</span>
+      <span>Página 14</span>
     </div>
   </div>
 
   <!-- SLIDE 13: VULCANACADEMY -->
-  <div class="slide">
+  <div class="slide" id="academy">
     <div class="slide-header">
       <div class="slide-header-left">
-        <h3>Escopo Detalhado</h3>
-        <h1>VulcanAcademy (Capacitação e Formação)</h1>
+        <p class="slide-eyebrow">Escopo Detalhado</p>
+        <h2>VulcanAcademy (Capacitação e Formação)</h2>
       </div>
       <div style="display: flex; align-items: center; gap: 16px;">
         <div class="slide-badge">Fator Humano</div>
@@ -969,37 +1240,37 @@
     </div>
     <div class="grid-2">
       <div class="card">
-        <h4>Objetivo & Atividades Técnicas</h4>
+        <h3>Objetivo & Atividades Técnicas</h3>
         <ul>
-          <li><strong>Objetivo:</strong> Elevar a maturidade técnica da organização e converter controles de segurança em cultura e comportamento[cite: 1, 2].</li>
-          <li>Capacitação em Secure Coding / AppSec para times de engenharia[cite: 1, 2].</li>
-          <li>Formação em DevSecOps, CI/CD seguro e observabilidade[cite: 1, 2].</li>
-          <li>Treinamento operacional de SOC, SIEM e Resposta a Incidentes[cite: 1, 2].</li>
-          <li>Programas de Security Champions e simulações contínuas de Phishing[cite: 1, 2].</li>
+          <li><strong>Objetivo:</strong> Elevar a maturidade técnica da organização e converter controles de segurança em cultura e comportamento.</li>
+          <li>Capacitação em Secure Coding / AppSec para times de engenharia.</li>
+          <li>Formação em DevSecOps, CI/CD seguro e observabilidade.</li>
+          <li>Treinamento operacional de SOC, SIEM e Resposta a Incidentes.</li>
+          <li>Programas de Security Champions e simulações contínuas de Phishing.</li>
         </ul>
       </div>
       <div class="card">
-        <h4>Entregáveis, Métricas & Frameworks</h4>
+        <h3>Entregáveis, Métricas & Frameworks</h3>
         <ul>
-          <li><strong>Entregáveis:</strong> Trilhas de aprendizagem, laboratórios práticos, avaliações, certificados/badges e relatórios de evolução[cite: 1, 2].</li>
-          <li><strong>Tecnologias:</strong> Ambiente educacional com simulações reais, Hack The Box Enterprise, KnowBe4[cite: 1, 2].</li>
-          <li><strong>Indicadores (KPIs):</strong> Phish-Prone Percentage (PPP), taxa de conclusão de módulos, score em labs práticos[cite: 1, 2].</li>
-          <li><strong>Referenciais:</strong> NIST SP 800-50, SANS Security Awareness Model, OWASP[cite: 1, 2].</li>
+          <li><strong>Entregáveis:</strong> Trilhas de aprendizagem, laboratórios práticos, avaliações, certificados/badges e relatórios de evolução.</li>
+          <li><strong>Tecnologias:</strong> Ambiente educacional com simulações reais, Hack The Box Enterprise, KnowBe4.</li>
+          <li><strong>Indicadores (KPIs):</strong> Phish-Prone Percentage (PPP), taxa de conclusão de módulos, score em labs práticos.</li>
+          <li><strong>Referenciais:</strong> NIST SP 800-50, SANS Security Awareness Model, OWASP.</li>
         </ul>
       </div>
     </div>
     <div class="footer-info">
       <span>VulcanAcademy - Human Risk Management</span>
-      <span>Página 13</span>
+      <span>Página 15</span>
     </div>
   </div>
 
   <!-- SLIDE 14: SEGURANÇA EM SUPERINTELIGÊNCIA -->
-  <div class="slide">
+  <div class="slide" id="superinteligencia">
     <div class="slide-header">
       <div class="slide-header-left">
-        <h3>Escopo Detalhado</h3>
-        <h1>Segurança, Proteção & Governança em Superinteligência</h1>
+        <p class="slide-eyebrow">Escopo Detalhado</p>
+        <h2>Segurança, Proteção & Governança em Superinteligência</h2>
       </div>
       <div style="display: flex; align-items: center; gap: 16px;">
         <div class="slide-badge">Segurança em Superinteligência</div>
@@ -1011,19 +1282,19 @@
         <p class="superinteligencia-defense-intro">Proteção prática para modelos, aplicações e agentes de Superinteligência antes de chegarem à produção. Avaliamos controles técnicos, caminhos de abuso e os pontos que exigem aprovação humana.</p>
         <div class="superinteligencia-defense-capabilities">
           <article class="superinteligencia-defense-capability">
-            <h4>Engenharia reversa</h4>
+            <h3>Engenharia reversa</h3>
             <p>Avaliação de extração de modelos, vazamento de prompts, exposição de pesos e abuso de APIs.</p>
           </article>
           <article class="superinteligencia-defense-capability">
-            <h4>Hardening de Superinteligência</h4>
+            <h3>Hardening de Superinteligência</h3>
             <p>Identidade, segredos, segmentação, limites, telemetria e configurações seguras durante todo o ciclo de vida.</p>
           </article>
           <article class="superinteligencia-defense-capability">
-            <h4>Agentes governados</h4>
+            <h3>Agentes governados</h3>
             <p>Privilégio mínimo, ferramentas autorizadas, validação de ações e rastreabilidade por execução.</p>
           </article>
           <article class="superinteligencia-defense-capability">
-            <h4>Revisão especializada</h4>
+            <h3>Revisão especializada</h3>
             <p>Threat modeling, revisão de arquitetura e testes de prompt injection, data poisoning e tool abuse.</p>
           </article>
         </div>
@@ -1041,16 +1312,16 @@
     </div>
     <div class="footer-info">
       <span>Vulcan Defense - Segurança em Superinteligência & Governança</span>
-      <span>Página 14</span>
+      <span>Página 16</span>
     </div>
   </div>
 
   <!-- SLIDE 15: CRIPTOGRAFIA PÓS-QUÂNTICA / ML-KEM -->
-  <div class="slide">
+  <div class="slide" id="pqc">
     <div class="slide-header">
       <div class="slide-header-left">
-        <h3>Resiliência Criptográfica</h3>
-        <h1>ML-KEM: troca de chaves pós-quântica</h1>
+        <p class="slide-eyebrow">Resiliência Criptográfica</p>
+        <h2>ML-KEM: troca de chaves pós-quântica</h2>
       </div>
       <div style="display: flex; align-items: center; gap: 16px;">
         <div class="slide-badge">FIPS 203</div>
@@ -1063,7 +1334,7 @@
         <div class="pqc-kem-callout"><strong>Implementação responsável:</strong> ML-KEM é um mecanismo de encapsulamento de chaves, não uma cifra de dados. Integramos bibliotecas e plataformas validadas ao protocolo e ao ambiente de cada cliente; não criamos primitivas criptográficas próprias.</div>
         <div class="grid-2">
           <div class="card">
-            <h4>Jornada de implantação</h4>
+            <h3>Jornada de implantação</h3>
             <ul>
               <li>Inventário de TLS, VPN, APIs, PKI, HSM e dependências criptográficas.</li>
               <li>Arquitetura híbrida com criptografia clássica e ML-KEM durante a transição.</li>
@@ -1071,7 +1342,7 @@
             </ul>
           </div>
           <div class="card">
-            <h4>Entregáveis</h4>
+            <h3>Entregáveis</h3>
             <ul>
               <li>Plano de migração pós-quântica priorizado por risco e vida útil dos dados.</li>
               <li>Baseline de configuração, evidências de teste e runbooks operacionais.</li>
@@ -1081,7 +1352,7 @@
         </div>
       </div>
       <div class="card">
-        <h4>Perfis aprovados pelo FIPS 203</h4>
+        <h3>Perfis aprovados pelo FIPS 203</h3>
         <table class="pqc-kem-table">
           <thead><tr><th>Perfil</th><th>Chave pública</th><th>Ciphertext</th></tr></thead>
           <tbody>
@@ -1096,16 +1367,16 @@
     </div>
     <div class="footer-info">
       <span>Vulcan Defense - Criptografia Pós-Quântica</span>
-      <span>Página 15</span>
+      <span>Página 17</span>
     </div>
   </div>
 
   <!-- SLIDE 16: DEMONSTRAÇÃO FUNCIONAL ML-KEM -->
-  <div class="slide">
+  <div class="slide" id="mlkem">
     <div class="slide-header">
       <div class="slide-header-left">
-        <h3>Validação Local</h3>
-        <h1>ML-KEM-768 em execução no navegador</h1>
+        <p class="slide-eyebrow">Validação Local</p>
+        <h2>ML-KEM-768 em execução no navegador</h2>
       </div>
       <div style="display: flex; align-items: center; gap: 16px;">
         <div class="slide-badge">Sem envio de chaves</div>
@@ -1114,14 +1385,14 @@
     </div>
     <div class="mlkem-demo-layout">
       <section class="mlkem-demo-panel" aria-labelledby="mlkem-demo-title">
-        <h4 id="mlkem-demo-title">Executar encapsulamento e decapsulamento</h4>
+        <h3 id="mlkem-demo-title">Executar encapsulamento e decapsulamento</h3>
         <p>Este teste usa ML-KEM-768 para gerar localmente um par de chaves, encapsular um segredo compartilhado e recuperá-lo pela chave privada. A página não transmite, armazena ou exibe material criptográfico.</p>
         <button class="mlkem-run" id="mlkem-run" type="button">Executar validação ML-KEM-768</button>
         <p class="mlkem-status" id="mlkem-status" role="status" aria-live="polite">Pronto para executar. O resultado será exibido neste dispositivo.</p>
         <div class="mlkem-result" id="mlkem-result" hidden></div>
       </section>
       <div class="card">
-        <h4>O que esta validação comprova</h4>
+        <h3>O que esta validação comprova</h3>
         <ul>
           <li>Geração de chave, encapsulamento e decapsulamento ML-KEM-768 conformes ao FIPS 203.</li>
           <li>Correspondência do segredo compartilhado entre as duas partes da demonstração.</li>
@@ -1132,16 +1403,16 @@
     </div>
     <div class="footer-info">
       <span>Vulcan Defense - Demonstração local de ML-KEM</span>
-      <span>Página 16</span>
+      <span>Página 18</span>
     </div>
   </div>
 
   <!-- SLIDE 17: MODELOS DE CONTRATAÇÃO & MÉTODO DE ENTREGA -->
-  <div class="slide">
+  <div class="slide" id="engajamento">
     <div class="slide-header">
       <div class="slide-header-left">
-        <h3>Engajamento Comercial</h3>
-        <h1>Modelos de Contratação & Método de Entrega</h1>
+        <p class="slide-eyebrow">Engajamento Comercial</p>
+        <h2>Modelos de Contratação & Método de Entrega</h2>
       </div>
       <div style="display: flex; align-items: center; gap: 16px;">
         <div class="slide-badge">Flexibilidade & Processo</div>
@@ -1150,84 +1421,101 @@
     </div>
     
     <div style="margin-bottom: 24px;">
-      <h4 style="color: var(--gold-bright); margin-bottom: 12px; font-family: 'Space Grotesk';">Modelos de Contratação</h4>
+      <h3 style="color: var(--gold-bright); margin-bottom: 12px; font-family: 'Space Grotesk';">Modelos de Contratação</h3>
       <div class="grid-3">
         <div class="card">
-          <h4 style="font-size: 0.95rem;">Projeto Fechado</h4>
-          <p style="font-size: 0.82rem; color: var(--text-muted);">Escopo, prazo e entregáveis delimitados (Pentests, Assessments, Auditorias de Superinteligência)[cite: 1, 2].</p>
+          <h3 style="font-size: 0.95rem;">Projeto Fechado</h3>
+          <p style="font-size: 0.82rem; color: var(--text-muted);">Escopo, prazo e entregáveis delimitados (Pentests, Assessments, Auditorias de Superinteligência).</p>
         </div>
         <div class="card">
-          <h4 style="font-size: 0.95rem;">Serviço Gerenciado (MSS/MDR)</h4>
-          <p style="font-size: 0.82rem; color: var(--text-muted);">Operação contínua 24x7 com garantias de SLA (SOC, Exposure, Monitoramento de Superinteligência)[cite: 1, 2].</p>
+          <h3 style="font-size: 0.95rem;">Serviço Gerenciado (MSS/MDR)</h3>
+          <p style="font-size: 0.82rem; color: var(--text-muted);">Operação contínua 24x7 com garantias de SLA (SOC, Exposure, Monitoramento de Superinteligência).</p>
         </div>
         <div class="card">
-          <h4 style="font-size: 0.95rem;">Squad Especializado / Retainer</h4>
-          <p style="font-size: 0.82rem; color: var(--text-muted);">Capacidade técnica dedicada/compartilhada ou reserva para Incident Response[cite: 1, 2].</p>
+          <h3 style="font-size: 0.95rem;">Squad Especializado / Retainer</h3>
+          <p style="font-size: 0.82rem; color: var(--text-muted);">Capacidade técnica dedicada/compartilhada ou reserva para Incident Response.</p>
         </div>
       </div>
     </div>
 
     <div>
-      <h4 style="color: var(--gold-bright); margin-bottom: 12px; font-family: 'Space Grotesk';">Método de Entrega em 6 Etapas</h4>
-      <div class="grid-4" style="grid-template-columns: repeat(6, 1fr);">
+      <h3 style="color: var(--gold-bright); margin-bottom: 12px; font-family: 'Space Grotesk';">Método de Entrega em 6 Etapas</h3>
+      <div class="grid-6">
         <div class="method-step">
           <div class="method-step-num">01</div>
           <div class="method-step-title">Descoberta</div>
-          <div class="method-step-desc">Mapeamento de ativos, riscos e requisitos[cite: 1, 2].</div>
+          <div class="method-step-desc">Mapeamento de ativos, riscos e requisitos.</div>
         </div>
         <div class="method-step">
           <div class="method-step-num">02</div>
           <div class="method-step-title">Arquitetura</div>
-          <div class="method-step-desc">Desenho de controles e integrações[cite: 1, 2].</div>
+          <div class="method-step-desc">Desenho de controles e integrações.</div>
         </div>
         <div class="method-step">
           <div class="method-step-num">03</div>
           <div class="method-step-title">Implantação</div>
-          <div class="method-step-desc">Onboarding, tuning e automação[cite: 1, 2].</div>
+          <div class="method-step-desc">Onboarding, tuning e automação.</div>
         </div>
         <div class="method-step">
           <div class="method-step-num">04</div>
           <div class="method-step-title">Validação</div>
-          <div class="method-step-desc">Testes, pentest, evidências e aceite[cite: 1, 2].</div>
+          <div class="method-step-desc">Testes, pentest, evidências e aceite.</div>
         </div>
         <div class="method-step">
           <div class="method-step-num">05</div>
           <div class="method-step-title">Operação</div>
-          <div class="method-step-desc">Monitoramento, resposta e métricas[cite: 1, 2].</div>
+          <div class="method-step-desc">Monitoramento, resposta e métricas.</div>
         </div>
         <div class="method-step">
           <div class="method-step-num">06</div>
           <div class="method-step-title">Evolução</div>
-          <div class="method-step-desc">Reteste, lições aprendidas e maturidade[cite: 1, 2].</div>
+          <div class="method-step-desc">Reteste, lições aprendidas e maturidade.</div>
         </div>
       </div>
     </div>
 
     <div class="footer-info">
       <span>Vulcan Defense - Execution Framework</span>
-      <span>Página 17</span>
+      <span>Página 19</span>
     </div>
   </div>
 
-  <!-- SLIDE 18: ENCERRAMENTO E CONTATO -->
-  <div class="slide cover-slide" style="min-height: 500px;">
-    <img class="cover-logo-img" src="logovulcan.png" alt="Vulcan Defense">
-    <h1 class="cover-title" style="font-size: 2.2rem;">VULCAN DEFENSE</h1>
-    <p style="color: var(--gold-primary); font-size: 1.1rem; margin-bottom: 24px;">Cyber Defense Operations</p>
-    
-    <div style="background: #151b28; border: 1px solid #222c40; border-radius: 12px; padding: 24px; max-width: 500px; width: 100%; margin-bottom: 24px;">
-      <p style="margin-bottom: 8px; color: var(--text-main);">🌐 <strong>Web:</strong> vulcandefense.com.br</p>
-      <p style="margin-bottom: 8px; color: var(--text-main);">🎓 <strong>Academy:</strong> academy.vulcandefense.com.br</p>
-      <p style="margin-bottom: 8px; color: var(--text-main);">📞 <strong>Comercial:</strong> +55 21 96658-4646 / +55 21 98682-3676</p>
+  <!-- SLIDE: ENCERRAMENTO E CONTATO -->
+  <div class="slide slide--cover" id="contato" style="min-height: 560px;">
+    <p class="hero-eyebrow" style="text-align: center; width: 100%;">Próximo passo</p>
+    <h2 class="cover-title" style="font-size: clamp(2rem, 3.6vw, 3rem); margin-bottom: 14px;">Vamos proteger o que importa?</h2>
+    <p class="hero-subtitle" style="text-align: center; margin: 0 auto 26px;">Conte sua realidade operacional. Devolvemos um diagnóstico objetivo, um caminho de implantação e uma proposta alinhada ao seu risco — não ao seu inventário de ferramentas.</p>
+    <div class="contact-panel">
+      <div class="contact-grid">
+        <a class="contact-item" href="https://vulcandefense.com.br" target="_blank" rel="noopener noreferrer">
+          <span>Site</span><strong>vulcandefense.com.br</strong>
+        </a>
+        <a class="contact-item" href="https://academy.vulcandefense.com.br" target="_blank" rel="noopener noreferrer">
+          <span>Academy</span><strong>academy.vulcandefense.com.br</strong>
+        </a>
+        <a class="contact-item" href="https://wa.me/5521966584646" target="_blank" rel="noopener noreferrer">
+          <span>Comercial · WhatsApp</span><strong>+55 21 96658-4646<br>+55 21 98682-3676</strong>
+        </a>
+      </div>
+      <div class="chips" style="justify-content: center; margin-top: 18px;">
+        <span class="chip chip--core">Cybershield</span>
+        <span class="chip">SOC / MDR</span>
+        <span class="chip">Pentest</span>
+        <span class="chip">AppSec</span>
+        <span class="chip">DevSecOps</span>
+        <span class="chip">OT / ICS</span>
+        <span class="chip">GRC</span>
+      </div>
     </div>
-
-    <div style="font-size: 0.8rem; color: var(--text-muted);">
-      Segurança da Informação • SOC/MDR • Segurança em Superinteligência • AppSec • DevSecOps • OT/ICS • GRC • Incident Response
+    <div class="hero-actions cover-cta">
+      <a class="btn btn--primary" href="https://wa.me/5521966584646" target="_blank" rel="noopener noreferrer">Iniciar conversa</a>
+      <button class="btn btn--ghost" type="button" data-print>Gerar versão PDF</button>
     </div>
+    <p class="contact-note">Vulcan Defense Ltda - ME · CNPJ 51.530.057/0001-33<br>Segurança da Informação · Cyber Defense Operations · Segurança em Superinteligência</p>
   </div>
+</main>
 
-</div>
-
+<script src="app.js" defer></script>
 <script type="module" src="assets/ml-kem-demo.js"></script>
 </body>
 </html>
